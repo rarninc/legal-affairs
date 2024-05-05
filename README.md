@@ -50,10 +50,37 @@ Enable php gd extension:
 <br>
 <br>
 
-## Contributors
+<h2 align="center" valign="top">Project Members</h2>
+<table align="center" valign="top">
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="20%"><a href="https://github.com/Robbbio">
+         <img src="https://avatars.githubusercontent.com/u/95852563?v=4" width="100px;" alt="Robin Alcaide"/>
+         <br /><sub><b>Robin Alcaide</b></sub></a><br />
+         <span>Project Manager</span>
+      </td>
+      <td align="center" valign="top" width="20%"><a href="https://github.com/Vivamusmagna">
+         <img src="https://avatars.githubusercontent.com/u/148524793?v=4" width="100px;" alt="Greg Andrew Rivera"/>
+         <br /><sub><b>Greg Andrew Rivera</b></sub></a><br />
+         <span>Business Analyst</span>
+      </td>    
+      <td align="center" valign="top" width="20%"><a href="https://github.com/rarninc">
+         <img src="https://avatars.githubusercontent.com/u/150262290?v=4" width="100px;" alt="Richard Inciong"/>
+         <br /><sub><b>Richard Inciong</b></sub></a><br />
+         <span>UI/UX Designer</span>
+      </td>
+      <td align="center" valign="top" width="20%"><a href="https://github.com/Friel05">
+         <img src="https://avatars.githubusercontent.com/u/150269790?v=4" width="100px;" alt="Jemuel Masigla"/>
+         <br /><sub><b>Jemuel Masigla</b></sub></a><br />
+         <span>Lead Programmer</span>
+      </td>
+       <td align="center" valign="top" width="20%"><a href="https://github.com/jldav1d">
+         <img src="https://avatars.githubusercontent.com/u/92510338?v=4" width="100px;" alt="Jed David"/>
+         <br /><sub><b>Jed David</b></sub></a><br />
+         <span>Support Programmer</span>
+      </td>
+    </tr>
+</tbody>
+</table>
 
-* **Robin Bryan Alcaide** - *Project Manager*
-* **Greg Andrew Rivera** - *Business Analyst*
-* **Richard Aaron Inciong** - *UI/UX*
-* **Jemuel Frian Masigla** - *Lead Programmer*
-* **Jed Laurence David** - *Support Programmer*
+
