@@ -8,25 +8,25 @@
         
         <div class="flex flex-col gap-3 w-2/3">
             <!-- Stats -->
-            <div class="flex w-full gap-3">
-                <div class="stats shadow w-fit bg-info">
-                    <div class="stat w-fit">
+            <div class="flex w-full gap-3 justify-items-stretch">
+                <div class="stats shadow w-full bg-info">
+                    <div class="stat w-full">
                         <div class="stat-figure text-secondary">
-                            <img src="storage/img/briefcase.png" alt="" class="h-14 w-14">
+                            <img src="storage/img/briefcase.png" alt="" class="h-14">
                         </div>
                         <div class="stat-title font-semibold">Cases this Month</div>
                         <div class="stat-value">6</div>
                         <div class="stat-desc font-semibold">May 2024</div>
                         <div class="stat-actions">
-                            <a href="case_matrix"><button class="btn btn-sm btn-outline">View Case Matrix</button> </a>
+                            <a href="case_matrix"><button class="btn btn-sm btn-outline">Case Matrix</button> </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="stats shadow w-fit bg-success">
-                    <div class="stat w-fit">
+                <div class="stats shadow w-full bg-success">
+                    <div class="stat w-full">
                         <div class="stat-figure text-secondary">
-                            <img src="storage/img/docs.png" alt="" class="h-14 w-14">
+                            <img src="storage/img/docs.png" alt="" class="h-14">
                         </div>
                         <div class="stat-title font-semibold">Proccessed Documents</div>
                         <div class="stat-value">789</div>
@@ -37,16 +37,16 @@
                     </div>
                 </div>
 
-                <div class="stats shadow w-fit bg-warning">
-                    <div class="stat w-fit">
+                <div class="stats shadow w-full bg-warning">
+                    <div class="stat w-full">
                         <div class="stat-figure text-secondary">
-                            <img src="storage/img/cert.png" alt="" class="h-14 w-14">
+                            <img src="storage/img/cert.png" alt="" class="h-14">
                         </div>
                         <div class="stat-title font-semibold">CeNoPAC Generated</div>
                         <div class="stat-value">14</div>
                         <div class="stat-desc font-semibold">May 2024</div>
                         <div class="stat-actions">
-                            <a href="cenopac_record"><button class="btn btn-sm btn-outline">View Record</button></a>
+                            <a href="cenopac_record"><button class="btn btn-sm btn-outline">Records</button></a>
                             <a href="cenopac"><button class="btn btn-sm">Generate</button></a>
                         </div>
                     </div>
@@ -56,14 +56,14 @@
 
             <div class="flex flex-col h-full w-full gap-3">
                 <!-- Charts -->
-                <div class="flex h-2/5 w-full justify-evenly">
-                    <div class="card h-full w-fit bg-base-100 shadow-xl">
-                        <div class="card-body flex h-full p-2">
+                <div class="flex h-2/5 w-full gap-3 justify-items-stretch">
+                    <div class="card h-full w-full bg-base-100 shadow-xl">
+                        <div class="card-body flex h-full p-2 justify-center items-center">
                             <canvas id="caseChart" class="h-full"></canvas>
                         </div>
                     </div>
-                    <div class="card h-full w-fit bg-base-100 shadow-xl">
-                        <div class="card-body flex h-full p-2">
+                    <div class="card h-full w-full bg-base-100 shadow-xl">
+                        <div class="card-body flex h-full p-2 justify-center items-center">
                             <canvas id="documentChart" class="h-full"></canvas>
                         </div>
                     </div>
