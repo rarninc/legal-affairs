@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\case_matrix;
 use App\Models\cenopac_record;
+use App\Models\cenopac_request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Livewire\Component;
 
@@ -16,6 +17,7 @@ class CenopacCertificate extends Component
     public $date_requested;
     public $date_issued;
     public $reject = false;
+    public $id;
     
     public function render()
     {
@@ -23,6 +25,7 @@ class CenopacCertificate extends Component
     }
     public function mount()
     {
+        $this->id = request()->query('id');
         $this->employee_name = request()->query('employee_name');
         $this->originating_office = request()->query('originating_office');
         $this->position = request()->query('position');
@@ -40,8 +43,11 @@ class CenopacCertificate extends Component
             }
         }
         if($this->reject){
+            cenopac_request::find($this->id)->update([
+                'status' => 'Denied',
+            ]);
             session()->flash('failed', $this->employee_name .' has a record of on-going case/s');
-            // $this->reset();
+            // $this->reset();  
             return redirect()->back();  
         }
         cenopac_record::create([
@@ -69,12 +75,6 @@ class CenopacCertificate extends Component
             echo $cenopac->stream();
             }, 'cenopac_cert.pdf');
 
-    }
-
-    public function go_to_case_matrix(){
-        $this->redirectRoute('case_matrix',[
-            'employee_name' => $this->employee_name,
-        ]);
     }
 
     public function rules(){

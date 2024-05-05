@@ -154,7 +154,7 @@
                     </div>
                     <div class="gap-2">
                         <button class="btn btn-sm btn-outline">Close</button>
-                        <button type = "button" wire:click = "go_to_case_matrix" class="btn btn-sm">Check Case Matrix</button>
+                        <a href="{{route('case_matrix', ['employee_name' => $employee_name])}}"><button type = "button" class="btn btn-sm">Check Case Matrix</button></a>
                     </div>
                 </div>
             </div>
