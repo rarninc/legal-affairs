@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\cenopac_record;
 use App\Models\cenopac_request;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\Url;
@@ -120,15 +121,5 @@ class CenopacRequestTable extends Component
 
     public function delete(){
         cenopac_request::find($this->id)->delete();
-
-    }
-
-    public function generate(string $employee_name,string $originating_office, string $position, string $purpose, string $date_requested){
-            $this->redirectRoute('cenopac', [
-            'employee_name' => $employee_name, 
-            'originating_office' =>$originating_office, 
-            'position' =>$position, 
-            'purpose' =>$purpose, 
-            'date_requested' =>$date_requested]);
     }
 }

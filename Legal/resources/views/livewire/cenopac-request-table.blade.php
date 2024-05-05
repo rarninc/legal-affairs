@@ -123,10 +123,19 @@
                             </div>
                         </td>
                         <td>
-                            <div wire:click = "generate('{{$cr->employee_name}}','{{$cr->originating_office}}','{{$cr->position}}','{{$cr->purpose}}','{{$cr->date_requested}}')" class="tooltip" data-tip="Generate">
-                                <button type = "button" class="btn btn-sm btn-neutral">
-                                    <img src="storage/img/check requests icon.png" alt="Delete Button" class="h-4">
-                                </button>
+                            <div class="tooltip" data-tip="Generate">
+                                <a href = "{{route('cenopac', [
+                                        'id' => $cr->id,
+                                        'employee_name' => $cr->employee_name, 
+                                        'originating_office' =>$cr->originating_office, 
+                                        'position' =>$cr->position, 
+                                        'purpose' =>$cr->purpose, 
+                                        'date_requested' =>$cr->date_requested
+                                ])}}">
+                                    <button type = "button" class="btn btn-sm btn-neutral">
+                                        <img src="storage/img/check requests icon.png" alt="Delete Button" class="h-4">
+                                    </button>
+                                </a>
                             </div>
                         </td>
                     </tr>           
