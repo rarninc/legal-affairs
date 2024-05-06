@@ -12,5 +12,4 @@
             @livewire('document-board')
         </div>
     </div>
-    
 @endsection
