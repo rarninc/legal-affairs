@@ -23,6 +23,10 @@ Route::get('/document_board', function () {
     return view('document_board');
 });
 
+Route::get('/document_view', function () {
+    return view('document_view');
+});
+
 Route::get('/about', function () {
     return view('about');
 });

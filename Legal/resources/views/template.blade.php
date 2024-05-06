@@ -86,7 +86,7 @@
                     </a>
                     <!--University Clearance-->
                     <div class="collapse collapse-arrow hover:bg-indigo-900">
-                        <input type="checkbox" /> 
+                        <input type="radio" name="my-accordion-1"/> 
                         <div class="collapse-title flex items-center py-2 px-5 gap-3">
                             <img class="w-6 h-6" src="storage/img/feature icon.png">
                             <span class="w-full text-xl font-normal leading-7 text-white">University Clearance</span>
@@ -105,12 +105,17 @@
                         </div>
                     </a>
                     <!--Document Tracker-->
-                    <a href="document_record" class="collapse hover:bg-indigo-900">
+                    <div class="collapse collapse-arrow hover:bg-indigo-900">
+                        <input type="radio" name="my-accordion-1"/>  
                         <div class="collapse-title flex items-center py-2 px-5 gap-3">
                             <img class="w-6 h-6" src="storage/img/feature icon.png">
-                            <span class="w-full text-xl font-normal leading-7 text-white">Document Tracker</span>
+                            <span class="w-full text-xl font-normal leading-7 text-white">Document Manager</span>
                         </div>
-                    </a>
+                        <div class="collapse-content font-normal"> 
+                            <li><a href="document_record" class="px-10 hover:bg-neutral-100 hover:text-black">Track Document</a></li>
+                            <li><a href="document_view" class="px-10 hover:bg-neutral-100 hover:text-black">Records</a></li>
+                        </div>
+                    </div>
                     <!--Logout-->
                     <a href="/" class="flex items-center mt-auto mb-10 hover:bg-indigo-900 py-1 pl-12 gap-2">
                         <img class="w-6 h-5" src="storage/img/logout icon.png">
