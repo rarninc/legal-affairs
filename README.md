@@ -56,7 +56,7 @@ Enable php gd extension:
     <tr>
       <td align="center" valign="top" width="20%"><a href="https://github.com/Robbbio">
          <img src="https://avatars.githubusercontent.com/u/95852563?v=4" width="100px;" alt="Robin Alcaide"/>
-         <br /><sub><b>Robin Alcaide</b></sub></a><br />
+         <br /><sub><b>Robin Bryan Alcaide</b></sub></a><br />
          <span>Project Manager</span>
       </td>
       <td align="center" valign="top" width="20%"><a href="https://github.com/Vivamusmagna">
@@ -66,17 +66,17 @@ Enable php gd extension:
       </td>    
       <td align="center" valign="top" width="20%"><a href="https://github.com/rarninc">
          <img src="https://avatars.githubusercontent.com/u/150262290?v=4" width="100px;" alt="Richard Inciong"/>
-         <br /><sub><b>Richard Inciong</b></sub></a><br />
+         <br /><sub><b>Richard Aaron Inciong</b></sub></a><br />
          <span>UI/UX Designer</span>
       </td>
       <td align="center" valign="top" width="20%"><a href="https://github.com/Friel05">
          <img src="https://avatars.githubusercontent.com/u/150269790?v=4" width="100px;" alt="Jemuel Masigla"/>
-         <br /><sub><b>Jemuel Masigla</b></sub></a><br />
+         <br /><sub><b>Jemuel Frian Masigla</b></sub></a><br />
          <span>Lead Programmer</span>
       </td>
        <td align="center" valign="top" width="20%"><a href="https://github.com/jldav1d">
          <img src="https://avatars.githubusercontent.com/u/92510338?v=4" width="100px;" alt="Jed David"/>
-         <br /><sub><b>Jed David</b></sub></a><br />
+         <br /><sub><b>Jed Laurence David</b></sub></a><br />
          <span>Support Programmer</span>
       </td>
     </tr>
