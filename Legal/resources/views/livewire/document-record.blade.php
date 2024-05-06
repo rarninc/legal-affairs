@@ -303,62 +303,16 @@
         <div class="card-body h-1 flex flex-col p-5">
             <div class="mb-2 w-full gap-2 flex flex-col items-center">
                 <!-- Search and Filter-->
-                <div class="w-full">
-                    <label class="input input-bordered flex items-center gap-2 w-full">
-                        <input wire:model.live.debounce.300ms = 'search' type="text" class="grow" placeholder="Search"/>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
-                    </label>
-                </div>
-                <div class="flex w-full gap-2 items-center justify-between">
-                    <div class="flex gap-2 h-fit items-center justify-end">
-                        <label for="filter_status" class="block text-sm font-medium text-gray-900 w-fit pl-2">Status:</label>
-                        <select wire:model.live="filter_status" id="filter_status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-40 p-2.5 ">
-                            <option value='' select>All</option>
-                            <option value="to-do">To-do</option>
-                            <option value="doing">Doing</option>
-                            <option value="done">Done</option>
-                        </select>
-                    </div>
-                    <button class="btn bg-indigo-800 btn-primary text-white items-center" onclick="add_document_modal.showModal()">  
-                        <img src="storage/img/add icon.png" alt="Add Button">
-                    </button>  
-                </div> 
+                @include('livewire.document-tracker.search-filter')
                 <!-- Search and Filter-->
             </div>
-
             <!-- Card Options -->
             <div class="scroll-container w-full h-full rounded-xl overflow-x-auto">
                 <div class="flex flex-col h-1 gap-2">
-                    <!-- Sample Card -->
-                    @foreach($document_record as $dr)
-                    <div class="card h-fit bg-gray-300 text-black shadow-sm relative">
-                        <div class="card-body h-fit flex p-3">
-                            <div class="flex flex-col">
-                                <div class="text-sm font-bold opacity-60">{{$dr->tracking_no}}</div>
-                                <div class="font-bold">{{$dr->document_title}}</div>
-                                <div class="text-sm font-semibold opacity-60">{{$dr->document_type}}</div>
-                            </div>
-                            <div class="flex items-center justify-end gap-2">
-                                <div class="tooltip" data-tip="View Document Record">
-                                    <button class="btn btn-sm btn-outline btn-neutral" onclick="view_document.showModal()">
-                                        View
-                                    </button>
-                                </div>
-                                <div class="tooltip" data-tip="Update">
-                                    <button type = "button" class="btn btn-sm btn-neutral" onclick="update_document_modal.showModal()">
-                                        <img src="storage/img/update icon.png" alt="Update Button" class="h-4">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                    <!-- Sample Card -->
+                @include('livewire.document-tracker.document-list')
                 </div>
             </div>
             <!-- Card Options -->
-
-
         </div>         
     </div>
     <!-- Table -->
