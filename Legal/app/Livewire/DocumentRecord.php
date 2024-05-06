@@ -17,9 +17,9 @@ class DocumentRecord extends Component
     public $document_type = '';
     public $tracking_no = '';
     public $from_office = '';
-    public $to_office = '';
+    public $to_office = null;
     public $date_received = '';
-    public $date_released = '';
+    public $date_released = null;
     public $status = '';
     public $remarks = '';
 
@@ -51,24 +51,59 @@ class DocumentRecord extends Component
         $this->status = $dr->status;
     }
 
-    public function update(){
-        dd($this->id);
-        // $this->validate();
+    public function create(){
+        $this->validate();
 
-        // document_record::find($this->id)->update([
-        //     'document_title' => $this->document_title,
-        //     'document_type'=> $this->document_type,
-        //     'tracking_no' => $this->tracking_no,
-        //     'from_office' => $this->from_office,
-        //     'to_office' => $this->to_office,
-        //     'date_received' => $this->date_received,
-        //     'date_released' => $this->date_released,
-        //     'status' => $this->status,
-        //     'remarks' => $this->remarks,
-        // ]);
+        document_record::create([
+            'document_title' => $this->document_title,
+            'document_type'=> $this->document_type,
+            'tracking_no' => $this->tracking_no,
+            'from_office' => $this->from_office,
+            'to_office' => $this->to_office,
+            'date_received' => $this->date_received,
+            'date_released' => $this->date_released,
+            'status' => $this->status,
+            'remarks' => $this->remarks,
+        ]);
         
-        // session()->flash('success','Document Record Updated Successfully');
+        $this->reset(
+            'document_title' ,
+            'document_type',
+            'tracking_no' ,
+            'from_office' ,
+            'to_office' ,
+            'date_received' ,
+            'date_released' ,
+            'status' ,
+            'remarks' 
+        );
+        session()->flash('success','CeNoPac Request Added Successfully');
+        return redirect()->back();
 
+    }
+
+    public function update_doc(){
+        $this->validate();
+
+        document_record::find($this->id)->update([
+            'document_title' => $this->document_title,
+            'document_type'=> $this->document_type,
+            'tracking_no' => $this->tracking_no,
+            'from_office' => $this->from_office,
+            'to_office' => $this->to_office,
+            'date_received' => $this->date_received,
+            'date_released' => $this->date_released,
+            'status' => $this->status,
+            'remarks' => $this->remarks,
+        ]);
+        
+        session()->flash('success','Document Record Updated Successfully');
+
+    }
+
+    public function close(){
+        $this->reset();
+        $this->resetValidation();
     }
     
     public function rules(){
