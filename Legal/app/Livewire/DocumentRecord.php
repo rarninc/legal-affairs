@@ -100,6 +100,20 @@ class DocumentRecord extends Component
         session()->flash('success','Document Record Updated Successfully');
 
     }
+    
+    public function view_document_history($id){
+        $this->id = $id;
+        $dr = document_record::find($this->id);
+        $this->document_title = $dr->document_title;
+        $this->document_type = $dr->document_type;
+        $this->tracking_no = $dr->tracking_no;
+        $this->from_office = $dr->from_office;
+        $this->to_office = $dr->to_office;
+        $this->date_received = $dr->date_received;
+        $this->date_released = $dr->date_released;
+        $this->remarks = $dr->remarks;
+        $this->status = $dr->status;
+    }
 
     public function close(){
         $this->reset();
