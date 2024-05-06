@@ -8,7 +8,7 @@
             </div>
             <div class="flex items-center justify-end gap-2">
                 <div class="tooltip" data-tip="View Document Record">
-                    <button class="btn btn-sm btn-outline btn-neutral" onclick="view_document.showModal()">
+                    <button wire:click = "edit_document_record('{{$dr->id}}')" class="btn btn-sm btn-outline btn-neutral" onclick="view_document.showModal()">
                         View
                     </button>
                 </div>
