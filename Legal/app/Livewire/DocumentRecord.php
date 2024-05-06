@@ -101,7 +101,7 @@ class DocumentRecord extends Component
 
     }
     
-    public function view_document_history($id){
+    public function view_document_history($id){ 
         $this->id = $id;
         $dr = document_record::find($this->id);
         $this->document_title = $dr->document_title;
