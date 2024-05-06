@@ -34,7 +34,7 @@
                     </div>
                     <div class="flex flex-col">
                         <label for="c" class="block mb-2 text-sm font-medium text-gray-900">Purpose <span class="text-red-600">*</span> </label>
-                        <input wire:model.defer='purpose' id="offense" type="text" placeholder="Purpose" class="input input-bordered w-full input-md" />
+                        <input wire:model.defer='purpose' id="purpose" type="text" placeholder="Purpose" class="input input-bordered w-full input-md" />
                         @error('purpose')
                         <span class="text-red-500"> {{$message}}</span>
                         @enderror

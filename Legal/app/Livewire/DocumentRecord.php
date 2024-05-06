@@ -13,6 +13,16 @@ class DocumentRecord extends Component
     public $search = '';
     public $filter_status = '';
     public $id = '';
+    public $document_title = '';
+    public $document_type = '';
+    public $tracking_no = '';
+    public $from_office = '';
+    public $to_office = '';
+    public $date_received = '';
+    public $date_released = '';
+    public $status = '';
+    public $remarks = '';
+
     public function render()
     {
         return view('livewire.document-record',
@@ -27,15 +37,50 @@ class DocumentRecord extends Component
         ]);
     }
     
+    public function edit_document_record($id){
+        $this->id = $id;
+        $dr = document_record::find($this->id);
+        $this->document_title = $dr->document_title;
+        $this->document_type = $dr->document_type;
+        $this->tracking_no = $dr->tracking_no;
+        $this->from_office = $dr->from_office;
+        $this->to_office = $dr->to_office;
+        $this->date_received = $dr->date_received;
+        $this->date_released = $dr->date_released;
+        $this->remarks = $dr->remarks;
+        $this->status = $dr->status;
+    }
+
+    public function update(){
+        dd($this->id);
+        // $this->validate();
+
+        // document_record::find($this->id)->update([
+        //     'document_title' => $this->document_title,
+        //     'document_type'=> $this->document_type,
+        //     'tracking_no' => $this->tracking_no,
+        //     'from_office' => $this->from_office,
+        //     'to_office' => $this->to_office,
+        //     'date_received' => $this->date_received,
+        //     'date_released' => $this->date_released,
+        //     'status' => $this->status,
+        //     'remarks' => $this->remarks,
+        // ]);
+        
+        // session()->flash('success','Document Record Updated Successfully');
+
+    }
+    
     public function rules(){
         return [
             'document_title'=> 'required|max:100',
             'document_type'=> 'required|max:100',
-            'date_received' => 'required',
-            "from_office" => 'required|max:100',
-            "to_office" => 'max:100',
-            'remarks' => 'max:255',
             'tracking_no' => ['required','max:20','regex:/^\d{4}-\d{4}-\d{4}-\d{4}+$/'],
+            'date_received' => 'required',
+            'from_office' => 'required|max:100',
+            'to_office' => 'max:100',
+            'status' => 'required',
+            'remarks' => 'max:255',
         ];
     }
 }

@@ -13,7 +13,7 @@
                     </button>
                 </div>
                 <div class="tooltip" data-tip="Update">
-                    <button type = "button" class="btn btn-sm btn-neutral" onclick="update_document_modal.showModal()">
+                    <button wire:click = "edit_document_record('{{$dr->id}}')" type = "button" class="btn btn-sm btn-neutral" onclick="update_document_modal.showModal()">
                         <img src="storage/img/update icon.png" alt="Update Button" class="h-4">
                     </button>
                 </div>
