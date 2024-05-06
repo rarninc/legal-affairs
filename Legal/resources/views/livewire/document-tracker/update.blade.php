@@ -4,7 +4,7 @@
         <!-- Form -->
         <form method="dialog">
             <h3 class="font-bold text-xl">Update Document Record</h3>
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button wire:click = 'close' class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             <div class="flex py-2">
                 <p>Provide data to the following fields. Click UPDATE when you’re done.</p>
                 <button type="reset" class="bg-gray-300 rounded px-4 h-fit ml-auto text-gray-800 font-semibold hover:bg-gray-400">Reset Fields</button>
@@ -86,10 +86,10 @@
                             <div class="flex font-semibold">
                                 <input wire:model.defer = 'status' id="status" type="radio" id="Add Done" name="radio-2" aria-label="Done" value="Done" class="btn btn-sm w-36" />
                             </div>                                 
-                            @error('status')
-                            <span class="text-red-500"> {{$message}}</span>
-                            @enderror
                         </div>
+                        @error('status')
+                        <span class="text-red-500"> {{$message}}</span>
+                        @enderror
                     </div>
                     <div class="flex flex-col">
                         <label for="remarks" class="block mb-2 text-sm font-medium text-gray-900">Remarks</label>
@@ -105,15 +105,15 @@
         </form>
         <!-- Form -->
         <div class="flex justify-end mt-auto ">
-            <button class="btn btn-success text-white" onclick="add_document_confirm.showModal()">Update</button>
-            <dialog id="add_document_confirm" class="modal">
+            <button class="btn btn-success text-white" onclick="update_document_confirm.showModal()">Update</button>
+            <dialog id="update_document_confirm" class="modal">
                 <div class="modal-box">
                     <h3 class="font-bold text-xl">Confirm Action</h3>
                     <p class="py-4">This action <strong>CANNOT</strong> be <strong>undone</strong>. Are you sure you want to <strong>UPDATE</strong> a new document record?</strong>.</p>
                     <div class="modal-action">
                         <form method="dialog">
                             <button class="btn btn-outline">Cancel</button>
-                            <button wire:click = 'update' type = "button" class="btn btn-primary" >YES</button>
+                            <button wire:click = 'update_doc' class="btn btn-primary" >YES</button>
                         </form>
                     </div>
                 </div>
