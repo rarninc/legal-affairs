@@ -3,7 +3,7 @@
         <div class="h-full relative">
             <img src="storage/img/background.png" alt="view bg" class="absolute h-full w-full rounded-xl">
             <form method="dialog">
-                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                <button wire:click = "close" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
             <div class="flex justify-center pt-4">
                 <div class="card w-3/5 bg-indigo-800 shadow-xl">
@@ -84,7 +84,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach($document_record_history as $drc)
+                                @foreach($document_record_history as $drc)
                                     <tr class="hover">
                                         <td>{{$drc->action}}</td>
                                         <td>{{$drc->version}}</td>
@@ -99,7 +99,7 @@
                                         <td>{{$drc->Status}}</td>
                                         <td>{{$drc->remarks}}</td>
                                     </tr> 
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

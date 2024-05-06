@@ -50,31 +50,70 @@
                 <!-- head -->
                 <thead>
                     <tr class="bg-neutral-300 text-black text-sm">        
-                        <th>Tracking Number</th>
-                        <th>Document Title</th>
-                        <th>Document Type</th>
-                        <th>From (Office/College)</th>
-                        <th>To (Office/College)</th>
-                        <th>Date Received</th>
-                        <th>Date Released</th>
+                    @include('livewire.table-sort',[
+                        'colname'=> 'tracking_no',
+                        'displayName'=> 'Tracking Number'
+                    ])
+                    @include('livewire.table-sort',[
+                        'colname'=> 'document_title',
+                        'displayName'=> 'Document Title'
+                    ])
+                    @include('livewire.table-sort',[
+                        'colname'=> 'document_type',
+                        'displayName'=> 'Document Type'
+                    ])
+                    @include('livewire.table-sort',[
+                        'colname'=> 'from_office',
+                        'displayName'=> 'From (Office/College)'
+                    ])      
+                    @include('livewire.table-sort',[
+                        'colname'=> 'to_office',
+                        'displayName'=> 'To (Office/College)'
+                    ])
+                    @include('livewire.table-sort',[
+                        'colname'=> 'date_received',
+                        'displayName'=> 'Date Received'
+                    ])             
+                    @include('livewire.table-sort',[
+                        'colname'=> 'date_released',
+                        'displayName'=> 'Date Released'
+                    ])  
                         <th>Status</th>
                         <th>Remarks</th>            
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($document_record as $dr)
                     <tr class="hover">                    
-                        <th></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <div class="badge badge-success">Done</div>
-                        </td>
-                        <td></td>
+                        <th>{{$dr->tracking_no}}</th>
+                        <td>{{$dr->document_title}}</td>
+                        <td>{{$dr->document_type}}</td>
+                        <td>{{$dr->from_office}}</td>
+                        <td>{{$dr->to_office}}</td>
+                        <td>{{$dr->date_received}}</td>
+                        <td>{{$dr->date_released}}</td>
+                        @if($dr->status=="To-Do")
+                            <td>
+                                <div class="badge badge-warning">
+                                    {{ $dr->status}}
+                                </div>
+                            </td>
+                        @elseif($dr->status=="Doing")
+                            <td>
+                                <div class="badge badge-warning">
+                                    {{ $dr->status}}
+                                </div>
+                            </td>
+                        @elseif($dr->status=="Done")
+                            <td>
+                                <div class="badge badge-success">
+                                    {{ $dr->status}}
+                                </div>
+                            </td>
+                        @endif
+                        <td>{{$dr->remarks}}</td>
                     </tr>
+                    @endforeach  
                 </tbody>
                 </table>
             </div>
