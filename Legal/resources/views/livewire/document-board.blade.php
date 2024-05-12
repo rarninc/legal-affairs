@@ -11,16 +11,18 @@
                         
                         <div class="scroll-container w-full h-full rounded-xl overflow-x-auto">
                             <div class="flex flex-col h-1 gap-3 p-5">
-                                <!-- Sample Card -->
+                                <!-- Document "To-Do" Card -->
+                                @foreach ($dr_to_do as $todos)
                                 <div class="card h-fit bg-info shadow-xl relative">
                                     <div class="card-body h-fit flex p-3">
                                         <div class="flex flex-col">
-                                            <div class="text-sm font-bold opacity-60">Tracking Number</div>
-                                            <div class="font-bold">Document Title</div>
-                                            <div class="text-sm font-semibold opacity-60">Document Type</div>
+                                            <div class="text-sm font-bold opacity-60">{{$todos->tracking_no}}</div>
+                                            <div class="font-bold">{{$todos->document_title}}</div>
+                                            <div class="text-sm font-semibold opacity-60">{{$todos->document_type}}</div>
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -35,46 +37,18 @@
                         
                         <div class="scroll-container w-full h-full rounded-xl overflow-x-auto">
                             <div class="flex flex-col h-1 gap-3 p-5">
-                                <!-- Sample Card -->
+                                <!-- Document "Doing" Card -->
+                                @foreach ($dr_doing as $doing)
                                 <div class="card h-fit bg-warning shadow-xl relative">
                                     <div class="card-body h-fit flex p-3">
                                         <div class="flex flex-col">
-                                            <div class="text-sm font-bold opacity-60">Tracking Number</div>
-                                            <div class="font-bold">Document Title</div>
-                                            <div class="text-sm font-semibold opacity-60">Document Type</div>
+                                            <div class="text-sm font-bold opacity-60">{{$doing->tracking_no}}</div>
+                                            <div class="font-bold">{{$doing->document_title}}</div>
+                                            <div class="text-sm font-semibold opacity-60">{{$doing->document_type}}</div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Sample Card -->
-                                <div class="card h-fit bg-warning shadow-xl relative">
-                                    <div class="card-body h-fit flex p-3">
-                                        <div class="flex flex-col">
-                                            <div class="text-sm font-bold opacity-60">Tracking Number</div>
-                                            <div class="font-bold">Document Title</div>
-                                            <div class="text-sm font-semibold opacity-60">Document Type</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Sample Card -->
-                                <div class="card h-fit bg-warning shadow-xl relative">
-                                    <div class="card-body h-fit flex p-3">
-                                        <div class="flex flex-col">
-                                            <div class="text-sm font-bold opacity-60">Tracking Number</div>
-                                            <div class="font-bold">Document Title</div>
-                                            <div class="text-sm font-semibold opacity-60">Document Type</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Sample Card -->
-                                <div class="card h-fit bg-warning shadow-xl relative">
-                                    <div class="card-body h-fit flex p-3">
-                                        <div class="flex flex-col">
-                                            <div class="text-sm font-bold opacity-60">Tracking Number</div>
-                                            <div class="font-bold">Document Title</div>
-                                            <div class="text-sm font-semibold opacity-60">Document Type</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -89,47 +63,25 @@
                         
                         <div class="scroll-container w-full h-full rounded-xl overflow-x-auto">
                             <div class="flex flex-col h-1 gap-3 p-5">
-                                <!-- Sample Card -->
+                                <!-- Document "Done" Card -->
+                                @foreach ($dr_done as $done)
                                 <div class="card h-fit bg-success shadow-xl relative">
                                     <div class="card-body h-fit flex p-3">
                                         <div class="flex flex-col">
-                                            <div class="text-sm font-bold opacity-60">Tracking Number</div>
-                                            <div class="font-bold">Document Title</div>
-                                            <div class="text-sm font-semibold opacity-60">Document Type</div>
+                                            <div class="text-sm font-bold opacity-60">{{$done->tracking_no}}</div>
+                                            <div class="font-bold">{{$done->document_title}}</div>
+                                            <div class="text-sm font-semibold opacity-60">{{$done->document_type}}</div>
                                         </div>
                                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                     </div>
                                 </div>
-                                <!-- Sample Card -->
-                                <div class="card h-fit bg-success shadow-xl relative">
-                                    <div class="card-body h-fit flex p-3">
-                                        <div class="flex flex-col">
-                                            <div class="text-sm font-bold opacity-60">Tracking Number</div>
-                                            <div class="font-bold">Document Title</div>
-                                            <div class="text-sm font-semibold opacity-60">Document Type</div>
-                                        </div>
-                                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                    </div>
-                                </div>
-                                <!-- Sample Card -->
-                                <div class="card h-fit bg-success shadow-xl relative">
-                                    <div class="card-body h-fit flex p-3">
-                                        <div class="flex flex-col">
-                                            <div class="text-sm font-bold opacity-60">Tracking Number</div>
-                                            <div class="font-bold">Document Title</div>
-                                            <div class="text-sm font-semibold opacity-60">Document Type</div>
-                                        </div>
-                                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- DONE -->
-
             </div>
-
         </div>         
     </div>
 </div>
