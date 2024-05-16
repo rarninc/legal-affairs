@@ -78,6 +78,7 @@ class DocumentRecord extends Component
             'remarks' 
         );
         session()->flash('success','CeNoPac Request Added Successfully');
+        $this->dispatch('rerender');
         return redirect()->back();
 
     }
@@ -98,7 +99,7 @@ class DocumentRecord extends Component
         ]);
         
         session()->flash('success','Document Record Updated Successfully');
-
+        $this->dispatch('rerender');
     }
     
     public function view_document_history($id){ 

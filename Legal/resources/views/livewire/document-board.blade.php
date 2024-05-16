@@ -72,7 +72,6 @@
                                             <div class="font-bold">{{$done->document_title}}</div>
                                             <div class="text-sm font-semibold opacity-60">{{$done->document_type}}</div>
                                         </div>
-                                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                     </div>
                                 </div>
                                 @endforeach
