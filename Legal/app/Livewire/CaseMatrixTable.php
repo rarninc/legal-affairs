@@ -52,7 +52,7 @@ class CaseMatrixTable extends Component
     }
     
     public function close(){
-        $this->reset();
+        $this->resetExcept('filter_status', 'search');
         $this->resetValidation();
     }
 

@@ -28,7 +28,7 @@
             data: {
             labels: labels,
             datasets: [{
-                label: '# of Cases',
+                label: '# of Cases Resolved',
                 data: casevalues,
                 borderWidth: 2
             }]
