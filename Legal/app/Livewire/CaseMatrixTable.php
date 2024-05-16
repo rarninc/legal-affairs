@@ -39,6 +39,7 @@ class CaseMatrixTable extends Component
 
     public function mount(){
         $this->search = request()->query('employee_name');
+        $this->date_issued = now()->format('Y-m-d');
     }
 
     public function create(){
@@ -83,6 +84,8 @@ class CaseMatrixTable extends Component
             'remarks' => 'max:255'
         ]);
         
+    
+
         case_matrix::find($this->editing_cm_docket)->update([
             'employee_name' => $this->employee_name,
             'case_title'=> $this->case_title,
@@ -98,6 +101,16 @@ class CaseMatrixTable extends Component
         session()->flash('success','Case Updated Successfully');
         
     }
+
+    public function update_date_resolved($status){
+        if($status == "Resolved"){
+            $this->date_resolved = date('Y-m-d');
+        }
+        else{
+            $this->date_resolved = null;
+        }
+    }
+
     public function render()
     {
         return view('livewire.case-matrix-table',
