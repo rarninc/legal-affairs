@@ -139,55 +139,6 @@
         setInterval(updateDateTime, 1000);
     </script>
 
-    <!--Script for Charts-->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script>
-        const ctx = document.getElementById('caseChart');
-        
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-            datasets: [{
-                label: '# of Cases',
-                data: [7, 12, 3, 5, 2, 3],
-                borderWidth: 2
-            }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const x = document.getElementById('documentChart');
-        
-        new Chart(x, {
-            type: 'line',
-            data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-            datasets: [{
-                label: '# of Document Proccessed',
-                data: [24, 52, 28, 69, 10, 33],
-                borderWidth: 2,
-                borderColor: '#097969',
-                backgroundColor: '#097969'
-            }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
-
 </body>
 
 </html>
