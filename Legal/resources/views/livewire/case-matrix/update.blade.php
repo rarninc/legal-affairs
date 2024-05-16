@@ -65,7 +65,11 @@
                         </div>
                         <div class="flex flex-col w-full">
                             <label for="date_resolved" class="block mb-2 text-sm font-medium text-gray-900">Date Resolved</label>
-                            <input name = "date_resolved" wire:model.defer="date_resolved" id="date_resolved" type="date" placeholder="Date Resolved" class="input input-bordered w-full input-md" />
+                            @if($this->status == "On-going")
+                                <input name = "date_resolved" id="date_resolved" type="date" placeholder="Date Resolved" class="input input-bordered w-full input-md" disabled />
+                            @else
+                                <input name = "date_resolved" wire:model.live.debounce300ms="date_resolved" id="date_resolved" type="date" placeholder="Date Resolved" class="input input-bordered w-full input-md" />
+                            @endif
                             @error('date_resolved')
                             <span class="text-red-500"> {{$message}}</span>
                             @enderror
@@ -75,10 +79,10 @@
                         <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status <span class="text-red-600">*</span></label>
                         <div class="flex w-full gap-4">
                             <div class="flex font-semibold">
-                                <input name = "status" wire:model.defer="status" id="status" type="radio" id="Add On-going" name="radio-2" aria-label="On-going" value="On-going" class="btn btn-sm btn-wide" />
+                                <input wire:click = 'update_date_resolved("On-going")' name = "status" wire:model.live.debounce300ms="status" id="status" type="radio" id="Add On-going" name="radio-2" aria-label="On-going" value="On-going" class="btn btn-sm btn-wide" />
                             </div>
                             <div class="flex font-semibold">
-                                <input name = "status" wire:model.defer="status" id="status" type="radio" id="Add On-going" name="radio-2" aria-label="Resolved" value="Resolved" class="btn btn-sm btn-wide" />
+                                <input wire:click = 'update_date_resolved("Resolved")' name = "status" wire:model.defer="status" id="status" type="radio" id="Add On-going" name="radio-2" aria-label="Resolved" value="Resolved" class="btn btn-sm btn-wide" />
                             </div>                                    
                         </div>
                         @error('status')

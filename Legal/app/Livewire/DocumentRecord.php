@@ -36,6 +36,10 @@ class DocumentRecord extends Component
             'document_record_history' => document_record_history::orderBy('version','desc')->where('id','like','%'.$this->id.'%')->get()
         ]);
     }
+
+    public function mount(){
+        $this->date_received = now()->format('Y-m-d');
+    }
     
     public function edit_document_record($id){
         $this->id = $id;
@@ -116,6 +120,14 @@ class DocumentRecord extends Component
         $this->status = $dr->status;
     }
 
+    public function update_date_released($status){
+        if($status == "Done" && is_null($this->date_released)){
+            $this->date_released = date('Y-m-d');
+        }
+        else{
+            $this->date_released = null;
+        }
+    }
     public function close(){
         $this->resetExcept('filter_status', 'search');
         $this->resetValidation();

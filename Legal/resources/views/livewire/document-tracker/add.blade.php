@@ -67,7 +67,11 @@
                         </div>
                         <div class="flex flex-col w-full">
                             <label for="date_released" class="block mb-2 text-sm font-medium text-gray-900">Date Released</label>
-                            <input wire:model.defer = 'date_released' id="date_released" type="date" placeholder="Date Released" class="input input-bordered w-full input-md" />
+                            @if ($this->status == 'Done')
+                                <input wire:model.live = 'date_released' id="date_released" type="date" placeholder="Date Released" class="input input-bordered w-full input-md" />
+                            @else
+                                <input id="date_released" type="date" placeholder="Date Released" class="input input-bordered w-full input-md" disabled/>
+                            @endif
                             @error('date_released')
                             <span class="text-red-500"> {{$message}}</span>
                             @enderror
@@ -77,13 +81,13 @@
                         <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status <span class="text-red-600">*</span></label>
                         <div class="flex w-full justify-between">
                             <div class="flex font-semibold">
-                                <input wire:model.defer = 'status' id="status" type="radio" id="Add To-Do" name="radio-2" aria-label="To-Do" value="To-Do" class="btn btn-sm w-36" />
+                                <input wire:click = 'update_date_released("To-Do")' wire:model.defer = 'status' id="status" type="radio" id="Add To-Do" name="radio-2" aria-label="To-Do" value="To-Do" class="btn btn-sm w-36" />
                             </div>
                             <div class="flex font-semibold">
-                                <input wire:model.defer = 'status' id="status" type="radio" id="Add Doing" name="radio-2" aria-label="Doing" value="Doing" class="btn btn-sm w-36" />
+                                <input wire:click = 'update_date_released("Doing")' wire:model.defer = 'status' id="status" type="radio" id="Add Doing" name="radio-2" aria-label="Doing" value="Doing" class="btn btn-sm w-36" />
                             </div>
                             <div class="flex font-semibold">
-                                <input wire:model.defer = 'status' id="status" type="radio" id="Add Done" name="radio-2" aria-label="Done" value="Done" class="btn btn-sm w-36" />
+                                <input wire:click = 'update_date_released("Done")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add Done" name="radio-2" aria-label="Done" value="Done" class="btn btn-sm w-36" />
                             </div>                                 
                         </div>
                         @error('status')
