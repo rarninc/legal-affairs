@@ -2,22 +2,23 @@
 
 namespace Livewire\Mechanisms\HandleComponents\Synthesizers;
 
-// This synth exists solely to capture empty strings being set to integer properties...
-class IntSynth extends Synth {
-    public static $key = 'int';
+// This synth exists solely to capture empty strings being set to float properties...
+class FloatSynth extends Synth {
+    public static $key = 'float';
 
-    static function match($target) {
+    static function match($target)
+    {
         return false;
     }
 
     static function matchByType($type) {
-        return $type === 'int';
+        return $type === 'float';
     }
 
     static function hydrateFromType($type, $value) {
         if ($value === '' || $value === null) return null;
 
-        if ((int) $value == $value) return (int) $value;
+        if ((float) $value == $value) return (float) $value;
 
         return $value;
     }

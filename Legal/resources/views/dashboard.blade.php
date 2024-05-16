@@ -56,18 +56,7 @@
 
             <div class="flex flex-col h-full w-full gap-3">
                 <!-- Charts -->
-                <div class="flex h-2/5 w-full gap-3 justify-items-stretch">
-                    <div class="card h-full w-full bg-base-100 shadow-xl">
-                        <div class="card-body flex h-full p-2 justify-center items-center">
-                            <canvas id="caseChart" class="h-full"></canvas>
-                        </div>
-                    </div>
-                    <div class="card h-full w-full bg-base-100 shadow-xl">
-                        <div class="card-body flex h-full p-2 justify-center items-center">
-                            <canvas id="documentChart" class="h-full"></canvas>
-                        </div>
-                    </div>
-                </div>
+                @livewire('dash-board-graph')
                 <!-- Charts -->
                 <!-- Pending Tasks -->
                 <div class="card h-3/5 w-full bg-base-100 shadow-xl">

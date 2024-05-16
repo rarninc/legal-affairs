@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-Livewire(LEGIT)',
-        'version' => 'dev-Livewire(LEGIT)',
-        'reference' => '0ca4f6527948a4007ff73afecacc70c004b2c4d2',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'f858452e0924292b0cbfa89aa38d88f3c75aed9d',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -398,9 +398,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-Livewire(LEGIT)',
-            'version' => 'dev-Livewire(LEGIT)',
-            'reference' => '0ca4f6527948a4007ff73afecacc70c004b2c4d2',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'f858452e0924292b0cbfa89aa38d88f3c75aed9d',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -497,9 +497,9 @@
             'dev_requirement' => false,
         ),
         'livewire/livewire' => array(
-            'pretty_version' => 'v3.4.9',
-            'version' => '3.4.9.0',
-            'reference' => 'c65b3f0798ab2c9338213ede3588c3cdf4e6fcc0',
+            'pretty_version' => 'v3.4.12',
+            'version' => '3.4.12.0',
+            'reference' => '54dd265c17f7b5200627eb9690590e7cbbad1027',
             'type' => 'library',
             'install_path' => __DIR__ . '/../livewire/livewire',
             'aliases' => array(),
