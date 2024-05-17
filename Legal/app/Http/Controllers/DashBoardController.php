@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\case_matrix;
 use App\Models\cenopac_record;
 use App\Models\document_record;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\On;
 
 class DashBoardController extends Controller
 {
@@ -26,6 +29,8 @@ class DashBoardController extends Controller
         $cenopac_generated_count = cenopac_record::whereYear('date_issued',$currentYear)
             ->whereMonth('date_issued', $currentMonth)
             ->count();
+            $currentYear = Carbon::now()->year;
+        
         return view('dashboard', compact('case_resolved_count', 'doc_done_count', 'cenopac_generated_count', 'month_and_year'));
     }
 }

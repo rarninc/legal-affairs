@@ -14,6 +14,7 @@ Route::get('/cenopac_record', [CenopacRecordController::class , 'index']);
 Route::get('/cenopac_request', [CenopacRequestController::class , 'index']);
 Route::get('/document_record', [DocumentRecordController::class , 'index']);
 Route::get('/dashboard', [DashBoardController::class , 'index']);
+Route::post('/dashboard/generate_report', [DashBoardController::class , 'generate_report'])->name('dashboard.generate');
 
 Route::get('/', function () {
     return view('login');
