@@ -124,6 +124,9 @@ class DocumentRecord extends Component
         if($status == "Done" && is_null($this->date_released)){
             $this->date_released = date('Y-m-d');
         }
+        elseif(!is_null($this->date_released)){
+            return;
+        }
         else{
             $this->date_released = null;
         }

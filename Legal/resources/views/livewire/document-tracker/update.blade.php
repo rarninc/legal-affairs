@@ -69,9 +69,9 @@
                         <div class="flex flex-col w-full">
                             <label for="date_released" class="block mb-2 text-sm font-medium text-gray-900">Date Released</label>
                             @if ($this->status == 'Done')
-                                <input wire:model.live.debounce300ms = 'date_released' id="date_released" type="date" placeholder="Date Released" class="input input-bordered w-full input-md" />
+                                <input wire:model.live.debounce150ms = 'date_released' id="date_released" type="date" placeholder="Date Released" class="input input-bordered w-full input-md" />
                             @else
-                                <input id="date_released" type="date" placeholder="Date Released" class="input input-bordered w-full input-md" disabled/>
+                                <input value = {{null}} id="date_released" type="date" placeholder="Date Released" class="input input-bordered w-full input-md" disabled/>
                             @endif
                             @error('date_released')
                             <span class="text-red-500"> {{$message}}</span>
