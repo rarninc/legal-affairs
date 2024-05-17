@@ -1,4 +1,4 @@
-<div class="flex h-2/5 w-full gap-3 justify-items-stretch">
+<div class="flex flex-col h-full w-full gap-3 justify-items-stretch">
     <div class="card h-full w-full bg-base-100 shadow-xl">
         <div wire:ignore class="card-body flex h-full p-2 justify-center items-center">
             <canvas id="caseChart" class="h-full"></canvas>
@@ -7,6 +7,12 @@
     <div class="card h-full w-full bg-base-100 shadow-xl">
         <div class="card-body flex h-full p-2 justify-center items-center">
             <canvas wire:ignore id="documentChart" class="h-full"></canvas>
+        </div>
+    </div>
+
+    <div class="card h-full w-full bg-base-100 shadow-xl">
+        <div class="card-body flex h-full p-2 justify-center items-center">
+            <canvas wire:ignore id="cenopacChart" class="h-full"></canvas>
         </div>
     </div>
 
@@ -30,7 +36,9 @@
             datasets: [{
                 label: '# of Cases Resolved',
                 data: casevalues,
-                borderWidth: 2
+                borderWidth: 2,
+                borderColor: '#00BFFF',
+                backgroundColor: '#00BFFF'
             }]
             },
             options: {
@@ -52,8 +60,31 @@
                 label: '# of Document Proccessed',
                 data: docvalues,
                 borderWidth: 2,
-                borderColor: '#097969',
-                backgroundColor: '#097969'
+                borderColor: '#00A875',
+                backgroundColor: '#00A875'
+            }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const cx = document.getElementById('cenopacChart');
+        
+        new Chart(cx, {
+            type: 'line',
+            data: {
+            labels: labels,
+            datasets: [{
+                label: '# of CeNoPac Generated',
+                data: docvalues,
+                borderWidth: 2,
+                borderColor: '#FFC000',
+                backgroundColor: '#FFC000'
             }]
             },
             options: {
