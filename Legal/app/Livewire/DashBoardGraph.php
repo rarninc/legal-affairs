@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\case_matrix;
+use App\Models\cenopac_record;
 use App\Models\document_record;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -11,8 +12,8 @@ class DashBoardGraph extends Component
 {
     public $doc_done_count;
     public $casegraph = [];
-
     public $docgraph = [];
+    public $cenopacgraph = [];
     public function render()
     {
         $currentYear = Carbon::now()->year;
@@ -36,9 +37,19 @@ class DashBoardGraph extends Component
                 'Month' => Carbon::createFromFormat('!m', $month)->format('M'),
                 'Value' => $case_resolved_count
             ];
+
+            $cenopac_generated_count = cenopac_record::whereYear('date_issued',$currentYear)
+            ->whereMonth('date_issued', $month)
+            ->count();
+
+            $cenopacgraph[] = [
+                'Month' => Carbon::createFromFormat('!m', $month)->format('M'),
+                'Value' => $cenopac_generated_count
+            ];
         }
         $this->docgraph = $docgraph;
         $this->casegraph = $casegraph;
+        $this->cenopacgraph = $cenopacgraph;
         return view('livewire.dash-board-graph');
     }
 }

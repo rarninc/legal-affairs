@@ -26,9 +26,11 @@
         const ctx = document.getElementById('caseChart');
         const casegraph = $wire.casegraph;
         const docgraph = $wire.docgraph;
+        const cenopacgraph = $wire.cenopacgraph;
         const labels = casegraph.map(item=>item.Month);
         const casevalues = casegraph.map(item=>item.Value);
         const docvalues = docgraph.map(item=>item.Value);
+        const cenopacvalues = cenopacgraph.map(item=>item.Value);
         new Chart(ctx, {
             type: 'line',
             data: {
@@ -81,7 +83,7 @@
             labels: labels,
             datasets: [{
                 label: '# of CeNoPac Generated',
-                data: docvalues,
+                data: cenopacvalues,
                 borderWidth: 2,
                 borderColor: '#FFC000',
                 backgroundColor: '#FFC000'
