@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\case_matrix;
 use App\Models\case_matrix_history;
+use App\Models\pending_task;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Url;
@@ -33,7 +34,10 @@ class CaseMatrixTable extends Component
     public $date_issued='';
     public $date_resolved='';
     public $status='';
+    public $status_before='';
     public $remarks='';
+    public $progress_no= 0;
+    public $priority='';
     public $editing_cm_docket;
 
 
@@ -44,8 +48,24 @@ class CaseMatrixTable extends Component
 
     public function create(){
         $valid = $this->validate();
-        
+        if($this->status == 'On-going'){
+            $this->validate([
+                'progress_no' => 'required',
+                'priority' => 'required',
+            ]);
+        }
         case_matrix::create($valid);
+        if(!$this->status == 'Resolved'){
+            pending_task::create([
+                "table_name" => 'Case Matrix',
+                "record_id" => $this->case_docket,
+                "record_title" => $this->case_title,
+                "status" => $this->status,
+                "created_at" => now(),
+                "progress_no" => $this->progress_no,
+                "priority" => $this->priority,
+            ]);
+        }
         session()->flash('success','Case Added Successfully');
         
         $this->reset();
@@ -60,6 +80,13 @@ class CaseMatrixTable extends Component
     public function edit_case_record(string $case_docket){
         $this->editing_cm_docket = $case_docket;
         $cm = case_matrix::find($this->editing_cm_docket);
+        $pending_task = pending_task::where('record_id', $this->editing_cm_docket)->get();
+        if ($pending_task->isNotEmpty()) {
+            $this->progress_no = $pending_task->first()->progress_no;
+            $this->priority = $pending_task->first()->priority;
+        } else {
+            $this->progress_no = 0;
+        }
         $this->case_docket = $this->editing_cm_docket ;
         $this->employee_name = $cm->employee_name;
         $this->case_title = $cm->case_title;
@@ -69,6 +96,7 @@ class CaseMatrixTable extends Component
         $this->date_issued = $cm->date_issued;
         $this->date_resolved = $cm->date_resolved;
         $this->status = $cm->status;
+        $this->status_before = $this->status;
         $this->remarks = $cm->remarks;
     }
     
@@ -84,7 +112,36 @@ class CaseMatrixTable extends Component
             'remarks' => 'max:255'
         ]);
         
-    
+        if($this->status == 'On-going'){
+            $this->validate([
+                'progress_no' => 'required',
+                'priority' => 'required',
+            ]);
+        }
+        
+        if($this->status == 'Resolved'){
+            pending_task::where('record_id', $this->editing_cm_docket)
+                ->delete(); 
+        }
+        elseif($this->status_before == 'Resolved'){
+            if($this->status == 'On-going'){
+                pending_task::create([
+                    "table_name" => 'Case Matrix',
+                    "record_id" => $this->case_docket,
+                    "record_title" => $this->case_title,
+                    "status" => $this->status,
+                    "created_at" => now(),
+                    "progress_no" => $this->progress_no,
+                    "priority" => $this->priority,
+                ]);
+            }
+        }
+        else{
+            pending_task::where('record_id', $this->editing_cm_docket)->update([
+                'progress_no' => $this->progress_no,
+                'priority' => $this->priority,
+            ]);
+        }
 
         case_matrix::find($this->editing_cm_docket)->update([
             'employee_name' => $this->employee_name,
@@ -139,6 +196,7 @@ class CaseMatrixTable extends Component
         $this->date_issued = $date_issued;
         $this->date_resolved = $date_resolved;
         $this->status = $status;
+        $this->status_before = $this->status;
         $this->remarks = $remarks;
     }
 

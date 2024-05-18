@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use App\Models\cenopac_record;
 use App\Models\cenopac_request;
+use App\Models\pending_task;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -26,13 +28,22 @@ class CenopacRequestTable extends Component
     public $position='';
     public $purpose='';
     public $status='';
-    public $date_requested='';
+    public $date_requested;
     public $originating_office='';
+    public $priority;
+    public $progress_no = 0;
     public $id;
 
     public function edit_cenopac_request($id){
         $this->editing_id = $id;
         $cr = cenopac_request::find($this->editing_id);
+        $pending_task = pending_task::where('record_id', $this->editing_id)->where('record_title', $cr->employee_name)->get();
+        if ($pending_task->isNotEmpty()) {
+            $this->progress_no = $pending_task->first()->progress_no;
+            $this->priority = $pending_task->first()->priority;
+        } else {
+            $this->progress_no = 0;
+        }
         $this->employee_name = $cr->employee_name;
         $this->originating_office = $cr->originating_office;
         $this->position = $cr->position;
@@ -43,7 +54,7 @@ class CenopacRequestTable extends Component
 
     public function update(){
         $this->validate();
-
+        
         cenopac_request::find($this->editing_id)->update([
             'employee_name' => $this->employee_name,
             'originating_office'=> $this->originating_office,
@@ -53,19 +64,14 @@ class CenopacRequestTable extends Component
             'status' => $this->status,
         ]);
 
-        session()->flash('success','CeNoPac Request Updated Successfully');
-    }
+        pending_task::where('record_id', (string) $this->editing_id)
+            ->where('record_title', $this->employee_name)
+            ->update([
+            'progress_no' => $this->progress_no,
+            'priority' => $this->priority,
+        ]);
 
-    public function render()
-    {
-        return view('livewire.cenopac-request-table',
-        [
-            'cenopac_request' => cenopac_request::orderBy($this->sortBy,$this->sortDir)->search($this->search)
-            ->when($this->filter_status !== '', function($query){
-                $query->where('status', $this->filter_status);
-            })
-            ->paginate($this->perPage)
-           ]);
+        session()->flash('success','CeNoPac Request Updated Successfully');
     }
 
     public function updatedSearch(){
@@ -93,7 +99,16 @@ class CenopacRequestTable extends Component
             'date_requested' => $this->date_requested,
             'status' => $this->status,
         ]);
-        
+        $current_record_id = DB::table('cenopac_request')->max('id');
+        pending_task::create([
+            "table_name" => 'CeNoPac Request',
+            "record_id" => (string) $current_record_id,
+            "record_title" => $this->employee_name,
+            "status" => $this->status,
+            "created_at" => now(),
+            "progress_no" => $this->progress_no,
+            "priority" => $this->priority,
+        ]);
         $this->reset();
         session()->flash('success','CeNoPac Request Added Successfully');
         return redirect()->back();
@@ -107,6 +122,8 @@ class CenopacRequestTable extends Component
             'purpose' => 'required|max:100',
             'date_requested' => 'required',
             'status' => 'required',
+            'progress_no' => 'required',
+            'priority' => 'required',
         ];        
     }
     
@@ -121,5 +138,18 @@ class CenopacRequestTable extends Component
 
     public function delete(){
         cenopac_request::find($this->id)->delete();
+        pending_task::where('record_id', (string)$this->id)->delete();
+    }
+
+    public function render()
+    {
+        return view('livewire.cenopac-request-table',
+        [
+            'cenopac_request' => cenopac_request::orderBy($this->sortBy,$this->sortDir)->search($this->search)
+            ->when($this->filter_status !== '', function($query){
+                $query->where('status', $this->filter_status);
+            })
+            ->paginate($this->perPage)
+           ]);
     }
 }

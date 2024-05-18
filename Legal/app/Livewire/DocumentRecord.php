@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\document_record;
 use App\Models\document_record_history;
+use App\Models\pending_task;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 
@@ -21,7 +22,10 @@ class DocumentRecord extends Component
     public $date_received = '';
     public $date_released = null;
     public $status = '';
+    public $status_before = '';
     public $remarks = '';
+    public $priority;
+    public $progress_no = 0;
 
     public function render()
     {
@@ -44,6 +48,13 @@ class DocumentRecord extends Component
     public function edit_document_record($id){
         $this->id = $id;
         $dr = document_record::find($this->id);
+        $pending_task = pending_task::where('record_id', $dr->tracking_no)->get();
+        if ($pending_task->isNotEmpty()) {
+            $this->progress_no = $pending_task->first()->progress_no;
+            $this->priority = $pending_task->first()->priority;
+        } else {
+            $this->progress_no = 0;
+        }
         $this->document_title = $dr->document_title;
         $this->document_type = $dr->document_type;
         $this->tracking_no = $dr->tracking_no;
@@ -53,10 +64,18 @@ class DocumentRecord extends Component
         $this->date_released = $dr->date_released;
         $this->remarks = $dr->remarks;
         $this->status = $dr->status;
+        $this->status_before = $this->status;
     }
 
     public function create(){
         $this->validate();
+        
+        if($this->status == 'To-Do' || $this->status == 'Doing'){
+            $this->validate([
+                'progress_no' => 'required',
+                'priority' => 'required',
+            ]);
+        }
 
         document_record::create([
             'document_title' => $this->document_title,
@@ -69,6 +88,18 @@ class DocumentRecord extends Component
             'status' => $this->status,
             'remarks' => $this->remarks,
         ]);
+
+        if($this->status != 'Done'){
+            pending_task::create([
+                "table_name" => $this->document_type,
+                "record_id" => $this->tracking_no,
+                "record_title" => $this->document_title,
+                "status" => $this->status,
+                "created_at" => now(),
+                "progress_no" => $this->progress_no,
+                "priority" => $this->priority,
+            ]);
+        }
         
         $this->reset(
             'document_title' ,
@@ -79,7 +110,9 @@ class DocumentRecord extends Component
             'date_received' ,
             'date_released' ,
             'status' ,
-            'remarks' 
+            'remarks',
+            'progress_no',
+            'priority' 
         );
         session()->flash('success','CeNoPac Request Added Successfully');
         $this->dispatch('rerender');
@@ -89,6 +122,13 @@ class DocumentRecord extends Component
 
     public function update_doc(){
         $this->validate();
+
+        if($this->status == 'To-Do' || $this->status == 'Doing'){
+            $this->validate([
+                'progress_no' => 'required',
+                'priority' => 'required',
+            ]);
+        }
 
         document_record::find($this->id)->update([
             'document_title' => $this->document_title,
@@ -101,6 +141,30 @@ class DocumentRecord extends Component
             'status' => $this->status,
             'remarks' => $this->remarks,
         ]);
+
+        if($this->status == 'Done'){
+            pending_task::where('record_id', $this->tracking_no)
+            ->delete(); 
+        }
+        elseif($this->status_before == 'Done'){
+            if($this->status == 'To-Do' || $this->status == 'Doing'){
+                pending_task::create([
+                    "table_name" => $this->document_type,
+                    "record_id" => $this->tracking_no,
+                    "record_title" => $this->document_title,
+                    "status" => $this->status,
+                    "created_at" => now(),
+                    "progress_no" => $this->progress_no,
+                    "priority" => $this->priority,
+                ]);
+            }
+        }
+        else{
+            pending_task::where('record_id', $this->tracking_no)->update([
+                'progress_no' => $this->progress_no,
+                'priority' => $this->priority,
+            ]);
+        }
         
         session()->flash('success','Document Record Updated Successfully');
         $this->dispatch('rerender');
@@ -118,6 +182,7 @@ class DocumentRecord extends Component
         $this->date_released = $dr->date_released;
         $this->remarks = $dr->remarks;
         $this->status = $dr->status;
+        $this->status_before = $this->status;
     }
 
     public function update_date_released($status){

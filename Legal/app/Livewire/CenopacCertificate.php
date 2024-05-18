@@ -62,6 +62,8 @@ class CenopacCertificate extends Component
         
         $this->date_issued = strtotime($this->date_issued);
         $this->date_issued = date('F d, Y', $this->date_issued);
+
+        cenopac_request::find($this->id)->delete();
         
         $cenopac = Pdf::loadView('pdf.generate_cenopac_cert', [
             'employee_name' => $this->employee_name,
