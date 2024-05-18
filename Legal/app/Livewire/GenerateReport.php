@@ -152,7 +152,7 @@ class GenerateReport extends Component
         $month_labels = json_encode(array_column($this->case_graph_year, 'Month'));
         $week_labels = json_encode(array_column($this->case_graph_month, 'Week'));
 
-        // all year values
+        // current year values
         $doc_year_values = json_encode(array_column($this->doc_graph_year, 'Value'));
         $case_year_values = json_encode(array_column($this->case_graph_year, 'Value'));
         $cenopac_year_values = json_encode(array_column($this->cenopac_graph_year, 'Value'));
@@ -169,7 +169,7 @@ class GenerateReport extends Component
             "data": {
               "labels": '.$month_labels. ',
               "datasets": [{
-                "label": "Cases",
+                "label": "Cases Resolved",
                 "data":' . $case_year_values . '
               }]
             }
@@ -202,7 +202,7 @@ class GenerateReport extends Component
             "data": {
               "labels": '.$week_labels. ',
               "datasets": [{
-                "label": "Cases | '.$month_now. '",
+                "label": "Cases Resolved | '.$month_now. '",
                 "data":' . $case_month_values . '
               }]
             }
