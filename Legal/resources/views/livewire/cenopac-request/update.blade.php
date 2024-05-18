@@ -62,27 +62,6 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="flex flex-col">
-                        <label for="progress" class="block mb-2 text-sm font-medium text-gray-900">Progress</label>
-                        <input type="range" min="0" max="100" value="0" class="range range-xs w-full" step="20" />
-                        <div class="w-full flex justify-between text-xs px-2">
-                            <span>0</span>
-                            <span>20</span>
-                            <span>40</span>
-                            <span>60</span>
-                            <span>80</span>
-                            <span>100</span>
-                        </div>  
-                    </div>
-                    <div class="flex flex-row justify-between items-center">
-                        <label for="status" class="block text-sm font-medium text-gray-900">Priority <span class="text-red-600">*</span></label>
-                        <div class="flex font-semibold">
-                            <input name = "status" id="status" type="radio" id="Add Urgent" name="radio-2" aria-label="Urgent" value="Urgent" class="btn btn-sm btn-wide" />
-                        </div>
-                        <div class="flex font-semibold">
-                            <input name = "status" id="status" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Nonurgent" value="Nonurgent" class="btn btn-sm btn-wide" />
-                        </div>                                    
-                    </div>
                 </div>
             </div>
             <!-- Form Fields -->
