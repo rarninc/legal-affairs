@@ -117,7 +117,9 @@
                         </td>
                         <td>
                             <div class="tooltip" data-tip="Delete Request">
-                                <button wire:click = "fetchID('{{$cr->id}}')" type = "button" class="btn btn-sm btn-error" onclick="delete_request_confirm.showModal()">
+                                <button wire:click = "fetchID('{{$cr->id}}')" 
+                                        wire:loading.attr = "disabled"
+                                        type = "button" class="btn btn-sm btn-error" onclick="delete_request_confirm.showModal()">
                                     <img src="storage/img/delete icon.png" alt="Delete Button" class="h-4">
                                 </button>
                             </div>

@@ -18,7 +18,11 @@
 
                     <div class="card-actions flex flex-col gap-1 items-center justify-center relative">
                         <i id="datetime" class="btn glass text-2xl text-white font-bold"></i>
-                        <button class="btn btn-sm btn-outline text-white text-lg w-full">Generate Reports</button>
+                        @livewire('generate-report')
+                        {{-- <form action="{{route('dashboard.generate')}}" method="POST" class="w-full">
+                            @csrf
+                            <button class="btn btn-sm btn-outline text-white text-lg w-full">Generate Reports</button>
+                        </form> --}}
                     </div>
                 </div>
             </div>
