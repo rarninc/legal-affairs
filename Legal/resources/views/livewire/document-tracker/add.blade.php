@@ -81,13 +81,13 @@
                         <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status <span class="text-red-600">*</span></label>
                         <div class="flex w-full justify-between">
                             <div class="flex font-semibold">
-                                <input wire:click = 'update_date_released("To-Do")' wire:model.defer = 'status' id="status" type="radio" id="Add To-Do" name="radio-2" aria-label="To-Do" value="To-Do" class="btn btn-sm w-36" />
+                                <input wire:click = 'update_date_released("To-Do")' wire:model.defer = 'status' id="status" type="radio" id="Add To-Do" name="radio-2" aria-label="To-Do" value="To-Do" class="btn btn-sm w-40" />
                             </div>
                             <div class="flex font-semibold">
-                                <input wire:click = 'update_date_released("Doing")' wire:model.defer = 'status' id="status" type="radio" id="Add Doing" name="radio-2" aria-label="Doing" value="Doing" class="btn btn-sm w-36" />
+                                <input wire:click = 'update_date_released("Doing")' wire:model.defer = 'status' id="status" type="radio" id="Add Doing" name="radio-2" aria-label="Doing" value="Doing" class="btn btn-sm w-40" />
                             </div>
                             <div class="flex font-semibold">
-                                <input wire:click = 'update_date_released("Done")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add Done" name="radio-2" aria-label="Done" value="Done" class="btn btn-sm w-36" />
+                                <input wire:click = 'update_date_released("Done")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add Done" name="radio-2" aria-label="Done" value="Done" class="btn btn-sm w-40" />
                             </div>                                 
                         </div>
                         @error('status')
@@ -100,6 +100,30 @@
                         @error('remarks')
                         <span class="text-red-500"> {{$message}}</span>
                         @enderror
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="progress" class="block mb-2 text-sm font-medium text-gray-900">Progress</label>
+                        <input type="range" min="0" max="100" value="0" class="range range-xs w-full" step="20" />
+                        <div class="w-full flex justify-between text-xs px-2">
+                            <span>0</span>
+                            <span>20</span>
+                            <span>40</span>
+                            <span>60</span>
+                            <span>80</span>
+                            <span>100</span>
+                        </div>  
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Priority <span class="text-red-600">*</span></label>
+                        <div class="flex w-full gap-4">
+                            <div class="flex font-semibold">
+                                <input name = "status" id="status" type="radio" id="Add Urgent" name="radio-2" aria-label="Urgent" value="Urgent" class="btn btn-sm btn-wide" />
+                            </div>
+                            <div class="flex font-semibold">
+                                <input name = "status" id="status" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Nonurgent" value="Nonurgent" class="btn btn-sm btn-wide" />
+                            </div>                                    
+                        </div>   
                     </div>
                 </div>
                 <!-- Form Right -->
