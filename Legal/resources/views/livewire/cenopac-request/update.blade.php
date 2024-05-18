@@ -62,6 +62,7 @@
                             @enderror
                         </div>
                     </div>
+                    {{-- For Testing --}}
                     {{-- <div class="flex flex-col">
                         <label for="progress" class="block mb-2 text-sm font-medium text-gray-900">Progress <span class="text-red-600">*</span></label>
                         <input wire:model.defer = 'progress_no'  type="range" min="0" max="100" class="range range-xs w-full" step="20" />
