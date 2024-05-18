@@ -13,29 +13,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($tasks as $t)
+                            @foreach($pending_tasks as $t)
                             <tr>
-                                <th>{{$t["no"]}}</th>
+                                <th></th>
                                 <td>
                                     <div class="flex items-center gap-3">
                                         <div>
-                                            <div class="font-bold">{{$t["task_title"]}}</div>
-                                            <div class="text-sm opacity-50">{{$t["task_type"]}}</div>
+                                            <div class="font-bold">{{$t->record_title}}</div>
+                                            <div class="text-sm opacity-50">{{$t->table_name}}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <input type="range" min="0" max="100" value="20" class="range range-xs w-full" step="20" />
-                                    <div class="w-full flex justify-between text-xs px-2">
+                                    <input disabled type="range" min="0" max="100" value="{{$t->progress_no}}" class="range range-xs w-full" step="20" />
+                                    {{-- <div class="w-full flex justify-between text-xs px-2">
                                         <span>0</span>
                                         <span>20</span>
                                         <span>40</span>
                                         <span>60</span>
                                         <span>80</span>
                                         <span>100</span>
-                                    </div>
+                                    </div> --}}
                                 </td>
-                                <th><div class="badge badge-warning">{{$t["remarks"]}}</div></th>
+                                <th><div class="badge badge-warning">{{$t->priority}}</div></th>
                             </tr>
                             @endforeach
                         </table>
