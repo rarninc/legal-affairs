@@ -9,6 +9,7 @@
     <title>Office of the University Legal Counsel</title>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="shortcut icon" type="x-icon" href="storage/img/PLM LOGO.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
 
     <style>
     .scroll-container::-webkit-scrollbar {
