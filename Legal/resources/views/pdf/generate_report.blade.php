@@ -91,7 +91,8 @@
         }
         .graph-2{
             border: none;
-            width: 500px;
+            padding-left: 20px;
+            width: 300px;
         }
         .col-1{
             width: 50%;
@@ -102,7 +103,10 @@
         .row-1{
             height: 200px;
         }
-
+        
+        .text-col2{
+            padding-left: 10px;
+        }
         .monthly-report{
             color: black;
             font-weight: bold;
@@ -110,6 +114,10 @@
         .graph-img{
             width:100%;
             height:200px;
+        }
+
+        strong{
+            font-weight: bold;
         }
     </style>
 </head>
@@ -136,7 +144,7 @@
     <hr>
     <p class="legal-counsel">OFFICE OF THE UNIVERSITY LEGAL COUNSEL
         <br>
-        {{-- <span class = "monthly-report">Monthly Report ({{$month_now}})</span> --}}
+        <span class = "monthly-report">Monthly Report ({{$month_now}})</span>
     </p>
      
     
@@ -146,21 +154,42 @@
             <tr class="row-1">
                 <td class="stats-graph col-1">
                     <div class= "graph-1">
-                        <img class = "graph-img" src="{{$url_1}}" alt="Case Matrix Graph">
+                        <img class = "graph-img" src="{{$case_graph_url_1}}" alt="Case Matrix Year Graph">
                     </div>
                 </td>
                 <td class="stats-graph col-2">
                     <div class="graph-2">
-                        <canvas id="pie_chart"></canvas>
+                        <img class = "graph-img" src="{{$case_graph_url_2}}" alt="Case Matrix Current Month Graph">
                     </div>
                 </td>
             </tr>
             <tr>
-                <td class="stats-graph col-2">
+                <td class="stats-graph col-1">
                     <ul class="data-overview">
-                        <li>Total Number of Cases: NUMBER</li>
-                        <li>Number of Resolved Cases: NUMBER</li>
-                        <li>Number of Pending Cases: NUMBER</li>
+                        <li><strong>This Year<strong></li>
+                        <li>Total Number of Cases: 
+                            <strong>{{$counts['case']['total']['yearly']}}</strong>
+                        </li>
+                        <li>No. of Resolved Cases: 
+                            <strong>{{$counts['case']['resolved']['yearly']}}</strong>
+                        </li>
+                        <li>No. of Pending Cases: 
+                            <strong>{{$counts['case']['pending']['yearly']}}</strong>
+                        </li>
+                    </ul>
+                </td>
+                <td class="stats-graph col-2">
+                    <ul class="data-overview text-col2">
+                        <li><strong>{{$month_now}}<strong></li>
+                        <li>Total Number of Cases: 
+                            <strong>{{$counts['case']['total']['monthly']}}</strong>
+                        </li>
+                        <li>No. of Resolved Cases: 
+                            <strong>{{$counts['case']['resolved']['monthly']}}</strong>
+                        </li>
+                        <li>No. of Pending Cases: 
+                            <strong>{{$counts['case']['pending']['monthly']}}</strong>
+                        </li>
                     </ul>
                 </td>
             </tr>
@@ -173,61 +202,90 @@
             <tr class="row-1">
                 <td class="stats-graph col-1">
                     <div class= "graph-1">
-                        <img class = "graph-img" src="{{$url_2}}" alt="CeNoPac Generated Graph">
+                        <img class = "graph-img" src="{{$cenopac_graph_url_1}}" alt="CeNoPac Generated Year Graph">
                     </div>
                 </td>
                 <td class="stats-graph col-2">
                     <div class="graph-2">
-                    </div>
-                </td>
-                <td class="stats-graph col-2">
-                    <div class="graph-2">
+                        <img class = "graph-img" src="{{$cenopac_graph_url_2}}" alt="CeNoPac Generated Current Month Graph">
                     </div>
                 </td>
             </tr>
             <tr>
-                <td class="stats-graph col-2">
+                <td class="stats-graph col-1">
                     <ul class="data-overview">
-                        <li>Total Number Certificate Generated: NUMBER</li>
-                        <li>Number of Request: NUMBER</li>
-                        <li>Number of Denied Request: NUMBER</li>
+                        <li><strong>This Year</strong></li>
+                        <li>Total No. of Generated Certificates: 
+                            <strong>{{$counts['cenopac']['generated']['yearly']}}</strong>
+                        </li>
+                        <li>No. of Request: 
+                            <strong>{{$counts['cenopac']['request']['yearly']}}</strong>
+                        </li>
+                        <li>No. of Denied Request: 
+                            <strong>{{$counts['cenopac']['denied']['yearly']}}</strong>
+                        </li>
+                    </ul>
+                </td>
+                <td class="stats-graph col-2">
+                    <ul class="data-overview text-col2">
+                        <li><strong>{{$month_now}}<strong></li>
+                        <li>Total No. of Generated Certificates: 
+                            <strong>{{$counts['cenopac']['generated']['monthly']}}</strong>
+                        </li>
+                        <li>No. of Request: 
+                            <strong>{{$counts['cenopac']['request']['monthly']}}</strong>
+                        </li>
+                        <li>No. of Denied Request: 
+                            <strong>{{$counts['cenopac']['denied']['monthly']}}</strong>
+                        </li>
                     </ul>
                 </td>
             </tr>
         </tbody>
     </table>
     
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
     <h2>Document Tracker</h2>
     <table>
         <tbody>
             <tr class="row-1">
                 <td class="stats-graph col-1">
                     <div class= "graph-1">
-                        <img class = "graph-img" src="{{$url_3}}" alt="Document Processed Graph">
+                        <img class = "graph-img" src="{{$doc_graph_url_1}}" alt="Document Processed Year Graph">
                     </div>
                 </td>
                 <td class="stats-graph col-2">
                     <div class="graph-2">
-                        
+                        <img class = "graph-img" src="{{$doc_graph_url_2}}" alt="Document Processed Current Month Graph">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td class="stats-graph col-2">
                     <ul class="data-overview">
-                        <li>Total Number of Cases: NUMBER</li>
-                        <li>Number of Resolved Cases: NUMBER</li>
-                        <li>Number of Pending Cases: NUMBER</li>
+                        <li><strong>This Year</strong></li>
+                        <li>Total No. of Documents: 
+                            <strong>{{$counts['doc']['total']['yearly']}}</strong>
+                        </li>
+                        <li>No. of Documents to be Processed: 
+                            <strong>{{$counts['doc']['to-do']['yearly'] + $counts['doc']['doing']['yearly']}}</strong>
+                        </li>
+                        <li>No. of Processed Documents: 
+                            <strong>{{$counts['doc']['done']['yearly']}}</strong>
+                        </li>
+                    </ul>
+                </td>
+                <td class="stats-graph col-2">
+                    <ul class="data-overview text-col2">
+                        <li><strong>{{$month_now}}</strong></li>
+                        <li>Total No. of Documents: 
+                            <strong>{{$counts['doc']['total']['monthly']}}</strong>
+                        </li>
+                        <li>No. of Documents to be Processed: 
+                            <strong>{{$counts['doc']['to-do']['monthly'] + $counts['doc']['doing']['monthly']}}</strong>
+                        </li>
+                        <li>No. of Processed Documents: 
+                            <strong>{{$counts['doc']['done']['monthly']}}</strong>
+                        </li>
                     </ul>
                 </td>
             </tr>
