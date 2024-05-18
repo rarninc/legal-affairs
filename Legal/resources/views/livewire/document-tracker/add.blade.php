@@ -116,7 +116,9 @@
                     <div class="modal-action">
                         <form method="dialog">
                             <button class="btn btn-outline">Cancel</button>
-                            <button wire:click = 'create' class="btn btn-primary" onclick="add_document_confirm.close()" > YES</button>
+                            <button wire:click = 'create'
+                                    wire:loading.attr = "disabled"
+                                    class="btn btn-primary" onclick="add_document_confirm.close()" > YES</button>
                         </form>
                     </div>
                 </div>

@@ -117,7 +117,9 @@
                     <div class="modal-action">
                         <form method="dialog">
                             <button class="btn btn-outline">Cancel</button>
-                            <button wire:click = 'update_doc' class="btn btn-primary" >YES</button>
+                            <button wire:click = 'update_doc' 
+                                    wire:loading.attr = "disabled"
+                                    class="btn btn-primary" >YES</button>
                         </form>
                     </div>
                 </div>

@@ -127,7 +127,9 @@
                         <div class="modal-action">
                             <form method="dialog">
                                 <button class="btn btn-outline">Cancel</button>
-                                <button wire:click.prevent="create" type="submit" class="btn btn-success text-white" onclick="no_pending_case.close()" > Generate Certificate</button>
+                                <button wire:click.prevent="create" 
+                                        wire:loading.attr = "disabled"
+                                        type="submit" class="btn btn-success text-white" onclick="no_pending_case.close()" > Generate Certificate</button>
                             </form>
                         </div>
                     </div>
