@@ -144,7 +144,7 @@
     <hr>
     <p class="legal-counsel">OFFICE OF THE UNIVERSITY LEGAL COUNSEL
         <br>
-        <span class = "monthly-report">Monthly Report ({{$month_now}})</span>
+        <span class = "monthly-report">{{$month_now}}</span>
     </p>
      
     
