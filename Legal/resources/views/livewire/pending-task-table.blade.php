@@ -10,10 +10,10 @@
                                     <th>Task Name</th>
                                     <th class="w-96">Progress</th>
                                     <th></th>
-                                    {{--@include('livewire.table-sort',[
+                                    @include('livewire.table-sort',[
                                         'colname'=> 'priority',
                                         'displayName'=> 'Priority'
-                                    ])--}}
+                                    ])
                                 </tr>
                             </thead>
                             <tbody>
