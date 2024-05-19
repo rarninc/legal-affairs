@@ -57,7 +57,8 @@ class PendingTaskTable extends Component
     {
         
         return view('livewire.pending-task-table', [
-            'pending_tasks' => pending_task::orderBy('created_at','ASC')->get()
+            'pending_tasks' => pending_task::orderBy('created_at','ASC')->get(),
+            'ctr' => 0,
         ]);
     }
 }

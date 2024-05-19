@@ -55,7 +55,7 @@ class CaseMatrixTable extends Component
             ]);
         }
         case_matrix::create($valid);
-        if(!$this->status == 'Resolved'){
+        if($this->status != 'Resolved'){
             pending_task::create([
                 "table_name" => 'Case Matrix',
                 "record_id" => $this->case_docket,

@@ -15,7 +15,7 @@
                             <tbody>
                             @foreach($pending_tasks as $t)
                             <tr>
-                                <th></th>
+                                <th>{{$ctr += 1}}</th>
                                 <td>
                                     <div class="flex items-center gap-3">
                                         <div>
