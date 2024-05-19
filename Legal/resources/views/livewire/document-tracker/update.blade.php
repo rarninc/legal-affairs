@@ -113,6 +113,9 @@
                                     <input wire:model.defer = 'priority' name = "priority" id="priority" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Nonurgent" value="Non-Urgent" class="btn btn-sm btn-wide" />
                                 </div>                                    
                             </div>   
+                        @error('priority')
+                        <span class="text-red-500"> {{$message}}</span>
+                        @enderror
                         </div>
                     @endif
 
