@@ -119,7 +119,7 @@
                     @if($this->status == 'Doing')
                         <div class="flex flex-col">
                             <label for="progress" class="block mb-2 text-sm font-medium text-gray-900">Progress</label>
-                            <input wire:model.defer = 'progress_no' type="range" min="0" max="100" value="0" class="range range-xs w-full" step="20" />
+                            <input wire:model.defer = 'progress_no' type="range" min="0" max="80" value="0" class="range range-xs w-full" step="20" />
                             <div class="w-full flex justify-between text-xs px-2">
                                 <span>0</span>
                                 <span>20</span>
@@ -139,6 +139,9 @@
                                     <input wire:model.defer = 'priority' name = "priority" id="priority" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Nonurgent" value="Non-Urgent" class="btn btn-sm btn-wide" />
                                 </div>                                    
                             </div>   
+                            @error('priority')
+                            <span class="text-red-500"> {{$message}}</span>
+                            @enderror
                         </div>
                     @endif
                 </div>
