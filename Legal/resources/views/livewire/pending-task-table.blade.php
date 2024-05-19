@@ -26,16 +26,14 @@
                                 </td>
                                 <td>
                                     <input disabled type="range" min="0" max="100" value="{{$t->progress_no}}" class="range range-xs w-full" step="20" />
-                                    {{-- <div class="w-full flex justify-between text-xs px-2">
-                                        <span>0</span>
-                                        <span>20</span>
-                                        <span>40</span>
-                                        <span>60</span>
-                                        <span>80</span>
-                                        <span>100</span>
-                                    </div> --}}
                                 </td>
-                                <th><div class="badge badge-warning">{{$t->priority}}</div></th>
+                                <th> 
+                                    @if($t->priority=="Urgent")
+                                    <div class="badge badge-error">{{$t->priority}}</div>
+                                    @else
+                                    <div class="badge badge-warning">{{$t->priority}}</div>
+                                    @endif
+                                </th>
                             </tr>
                             @endforeach
                         </table>
