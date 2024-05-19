@@ -99,14 +99,13 @@
                     @if($this->status == 'On-going')
                         <div class="flex flex-col">
                             <label for="progress" class="block mb-2 text-sm font-medium text-gray-900">Progress <span class="text-red-600">*</span></label>
-                            <input wire:model.defer = 'progress_no' type="range" min="0" max="100" value="0" class="range range-xs w-full" step="20" />
+                            <input wire:model.defer = 'progress_no' type="range" min="0" max="80" value="0" class="range range-xs w-full" step="20" />
                             <div class="w-full flex justify-between text-xs px-2">
                                 <span>0</span>
                                 <span>20</span>
                                 <span>40</span>
                                 <span>60</span>
                                 <span>80</span>
-                                <span>100</span>
                             </div>
                             @error('progress_no')
                             <span class="text-red-500"> {{$message}}</span>

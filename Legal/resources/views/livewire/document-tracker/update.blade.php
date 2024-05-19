@@ -82,13 +82,13 @@
                         <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status <span class="text-red-600">*</span></label>
                         <div class="flex w-full justify-between">
                             <div class="flex font-semibold">
-                                <input wire:click = 'update_date_released("To-Do")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add To-Do" name="radio-2" aria-label="To-Do" value="To-Do" class="btn btn-sm w-40" />
+                                <input wire:click = 'update_date_released("To-Do")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add To-Do" name="radio-2" aria-label="To-Do" value="To-Do" class="btn btn-sm w-36" />
                             </div>
                             <div class="flex font-semibold">
-                                <input wire:click = 'update_date_released("Doing")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add Doing" name="radio-2" aria-label="Doing" value="Doing" class="btn btn-sm w-40" />
+                                <input wire:click = 'update_date_released("Doing")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add Doing" name="radio-2" aria-label="Doing" value="Doing" class="btn btn-sm w-36" />
                             </div>
                             <div class="flex font-semibold">
-                                <input wire:click = 'update_date_released("Done")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add Done" name="radio-2" aria-label="Done" value="Done" class="btn btn-sm w-40" />
+                                <input wire:click = 'update_date_released("Done")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add Done" name="radio-2" aria-label="Done" value="Done" class="btn btn-sm w-36" />
                             </div>                                 
                         </div>
                         @error('status')
@@ -126,7 +126,6 @@
                                 <span>40</span>
                                 <span>60</span>
                                 <span>80</span>
-                                <span>100</span>
                             </div>  
                         </div>
                         

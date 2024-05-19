@@ -44,48 +44,16 @@
                             <label for="date_requested" class="block mb-2 text-sm font-medium text-gray-900">Date Requested <span class="text-red-600">*</span></label>
                             <input id="date_requested" type="date" value="{{$this->date_requested}}" placeholder="Date Issued" class="input input-bordered w-full input-md" disabled/>
                         </div>
-                        {{-- <div class="flex flex-col w-full">
-                            <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status <span class="text-red-600">*</span></label>
-                            <div class="flex w-full gap-4">
-                                <div class="flex font-semibold">
-                                    <input name = "status" wire:model.live.debounce100ms="status" id="status" type="radio" id="Add Pending" name="radio-2" aria-label="Pending" value="Pending" class="btn btn-sm" />
-                                </div>
-                                <div class="flex font-semibold">
-                                    <input name = "status" wire:model.live.debounce100ms="status" id="status" type="radio" id="Add For Release" name="radio-2" aria-label="For Release" value="For Release" class="btn btn-sm" />
-                                </div>
-                                <div class="flex font-semibold">
-                                    <input name = "status" wire:model.live.debounce100ms="status" id="status" type="radio" id="Add Denied" name="radio-2" aria-label="Denied" value="Denied" class="btn btn-sm" />
-                                </div>                                 
-                            </div>
-                            @error('status')
-                                <span class="text-red-500"> {{$message}}</span>
-                            @enderror
-                        </div> --}}
                     </div>
-                    {{-- Contribution Testing --}}
-                    {{-- <div class="flex flex-col">
-                        <label for="progress" class="block mb-2 text-sm font-medium text-gray-900">Progress <span class="text-red-600">*</span></label>
-                        <input wire:model.defer = 'progress_no'  type="range" min="0" max="100" class="range range-xs w-full" step="20" />
-                        <div class="w-full flex justify-between text-xs px-2">
-                            <span>0</span>
-                            <span>20</span>
-                            <span>40</span>
-                            <span>60</span>
-                            <span>80</span>
-                            <span>100</span>
-                        </div>
-                        @error('progress_no')
-                            <span class="text-red-500"> {{$message}}</span>
-                        @enderror    
-                    </div> --}}
+                    
                     @if($this->status != 'Denied')
-                        <div class="flex flex-row justify-between items-center">
+                        <div class="flex flex-row justify-between mt-1 items-center">
                             <label for="status" class="block text-sm font-medium text-gray-900">Priority <span class="text-red-600">*</span></label>
                             <div class="flex font-semibold">
-                                <input wire:model = 'priority' name = "priority" id="priority" type="radio" id="Add Urgent" name="radio-2" aria-label="Urgent" value="Urgent" class="btn btn-sm w-40" />
+                                <input wire:model = 'priority' name = "priority" id="priority" type="radio" id="Add Urgent" name="radio-2" aria-label="Urgent" value="Urgent" class="btn btn-sm btn-wide" />
                             </div>
                             <div class="flex font-semibold">
-                                <input wire:model = 'priority' name = "priority" id="priority" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Nonurgent" value="Non-Urgent" class="btn btn-sm w-40" />
+                                <input wire:model = 'priority' name = "priority" id="priority" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Nonurgent" value="Non-Urgent" class="btn btn-sm btn-wide" />
                             </div>
                             @error('priority')
                                 <span class="text-red-500"> {{$message}}</span>
