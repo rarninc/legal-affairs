@@ -141,7 +141,7 @@ class DocumentRecord extends Component
             'status' => $this->status,
             'remarks' => $this->remarks,
         ]);
-
+        $this->progress_no = ($this->status == 'To-Do') ? 0 : $this->progress_no;
         if($this->status == 'Done'){
             pending_task::where('record_id', $this->tracking_no)
             ->delete(); 
