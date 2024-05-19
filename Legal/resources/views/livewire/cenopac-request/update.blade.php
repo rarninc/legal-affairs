@@ -44,23 +44,23 @@
                             <label for="date_requested" class="block mb-2 text-sm font-medium text-gray-900">Date Requested <span class="text-red-600">*</span></label>
                             <input id="date_requested" type="date" value="{{$this->date_requested}}" placeholder="Date Issued" class="input input-bordered w-full input-md" disabled/>
                         </div>
-                        <div class="flex flex-col w-full">
+                        {{-- <div class="flex flex-col w-full">
                             <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status <span class="text-red-600">*</span></label>
                             <div class="flex w-full gap-4">
                                 <div class="flex font-semibold">
-                                    <input name = "status" wire:model.defer="status" id="status" type="radio" id="Add Pending" name="radio-2" aria-label="Pending" value="Pending" class="btn btn-sm" />
+                                    <input name = "status" wire:model.live.debounce100ms="status" id="status" type="radio" id="Add Pending" name="radio-2" aria-label="Pending" value="Pending" class="btn btn-sm" />
                                 </div>
                                 <div class="flex font-semibold">
-                                    <input name = "status" wire:model.defer="status" id="status" type="radio" id="Add For Release" name="radio-2" aria-label="For Release" value="For Release" class="btn btn-sm" />
+                                    <input name = "status" wire:model.live.debounce100ms="status" id="status" type="radio" id="Add For Release" name="radio-2" aria-label="For Release" value="For Release" class="btn btn-sm" />
                                 </div>
                                 <div class="flex font-semibold">
-                                    <input name = "status" wire:model.defer="status" id="status" type="radio" id="Add Denied" name="radio-2" aria-label="Denied" value="Denied" class="btn btn-sm" />
+                                    <input name = "status" wire:model.live.debounce100ms="status" id="status" type="radio" id="Add Denied" name="radio-2" aria-label="Denied" value="Denied" class="btn btn-sm" />
                                 </div>                                 
                             </div>
                             @error('status')
                                 <span class="text-red-500"> {{$message}}</span>
                             @enderror
-                        </div>
+                        </div> --}}
                     </div>
                     {{-- Contribution Testing --}}
                     {{-- <div class="flex flex-col">
@@ -78,18 +78,20 @@
                             <span class="text-red-500"> {{$message}}</span>
                         @enderror    
                     </div> --}}
-                    <div class="flex flex-row justify-between items-center">
-                        <label for="status" class="block text-sm font-medium text-gray-900">Priority <span class="text-red-600">*</span></label>
-                        <div class="flex font-semibold">
-                            <input wire:model = 'priority' name = "priority" id="priority" type="radio" id="Add Urgent" name="radio-2" aria-label="Urgent" value="Urgent" class="btn btn-sm w-40" />
+                    @if($this->status != 'Denied')
+                        <div class="flex flex-row justify-between items-center">
+                            <label for="status" class="block text-sm font-medium text-gray-900">Priority <span class="text-red-600">*</span></label>
+                            <div class="flex font-semibold">
+                                <input wire:model = 'priority' name = "priority" id="priority" type="radio" id="Add Urgent" name="radio-2" aria-label="Urgent" value="Urgent" class="btn btn-sm w-40" />
+                            </div>
+                            <div class="flex font-semibold">
+                                <input wire:model = 'priority' name = "priority" id="priority" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Nonurgent" value="Non-Urgent" class="btn btn-sm w-40" />
+                            </div>
+                            @error('priority')
+                                <span class="text-red-500"> {{$message}}</span>
+                            @enderror                                    
                         </div>
-                        <div class="flex font-semibold">
-                            <input wire:model = 'priority' name = "priority" id="priority" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Nonurgent" value="Non-Urgent" class="btn btn-sm w-40" />
-                        </div>
-                        @error('priority')
-                            <span class="text-red-500"> {{$message}}</span>
-                        @enderror                                    
-                    </div>
+                    @endif
                 </div>
             </div>
             <!-- Form Fields -->

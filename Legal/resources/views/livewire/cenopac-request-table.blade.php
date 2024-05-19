@@ -110,7 +110,9 @@
                         @endif
                         <td>
                             <div class="tooltip" data-tip="Update Request">
-                                <button type = "button" class="btn btn-sm btn-success" wire:click = "edit_cenopac_request({{ $cr->id }})" onclick="update_cenopac_req_modal.showModal()">
+                                <button type = "button" class="btn btn-sm btn-success" 
+                                    wire:click = "edit_cenopac_request({{ $cr->id }})" 
+                                    onclick="delayedModalShow()">
                                     <img src="storage/img/update icon.png" alt="Update Button" class="h-4">
                                 </button>
                             </div>
@@ -163,5 +165,13 @@
             </div> 
         </div>
     </div>
+
+    <script>
+        function delayedModalShow() {
+            setTimeout(function() {
+                document.getElementById('update_cenopac_req_modal').showModal();
+            }, 300); 
+        }
+    </script>
     <!-- Table -->
 </div>

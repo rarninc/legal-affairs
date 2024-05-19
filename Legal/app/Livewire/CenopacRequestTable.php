@@ -28,6 +28,7 @@ class CenopacRequestTable extends Component
     public $position='';
     public $purpose='';
     public $status='';
+    public $status_before='';
     public $date_requested;
     public $originating_office='';
     public $priority;
@@ -49,6 +50,7 @@ class CenopacRequestTable extends Component
         $this->position = $cr->position;
         $this->purpose = $cr->purpose;
         $this->status = $cr->status;
+        $this->status_before = $this->status;
         $this->date_requested = $cr->date_requested;
     }
 
@@ -63,13 +65,18 @@ class CenopacRequestTable extends Component
             'date_requested' => $this->date_requested,
             'status' => $this->status,
         ]);
-
-        pending_task::where('record_id', (string) $this->editing_id)
-            ->where('record_title', $this->employee_name)
-            ->update([
-            'progress_no' => $this->progress_no,
-            'priority' => $this->priority,
-        ]);
+        $current_record_id = DB::table('cenopac_request')->max('id');
+        if($this->status_before == 'Denied' && $this->status == 'Pending'){
+            pending_task::create([
+                "table_name" => 'CeNoPac Request',
+                "record_id" => (string) $current_record_id,
+                "record_title" => $this->employee_name,
+                "status" => $this->status,
+                "created_at" => now(),
+                "progress_no" => $this->progress_no,
+                "priority" => $this->priority,
+            ]);
+        }
 
         session()->flash('success','CeNoPac Request Updated Successfully');
     }
