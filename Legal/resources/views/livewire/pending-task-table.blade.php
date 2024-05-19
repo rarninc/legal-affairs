@@ -10,11 +10,15 @@
                                     <th>Task Name</th>
                                     <th class="w-96">Progress</th>
                                     <th></th>
+                                    {{--@include('livewire.table-sort',[
+                                        'colname'=> 'priority',
+                                        'displayName'=> 'Priority'
+                                    ])--}}
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach($pending_tasks as $t)
-                            <tr>
+                            <tr class="hover">
                                 <th>{{$ctr += 1}}</th>
                                 <td>
                                     <div class="flex items-center gap-3">
@@ -25,9 +29,10 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <input disabled type="range" min="0" max="100" value="{{$t->progress_no}}" class="range range-xs w-full" step="20" />
+                                    <progress class="progress w-full" value="{{$t->progress_no}}" max="100"></progress>
+                                    <!--<input disabled type="range" min="0" max="100" value="{{$t->progress_no}}" class="range range-xs w-full" step="20" />-->
                                 </td>
-                                <th> 
+                                <th class="text-center"> 
                                     @if($t->priority=="Urgent")
                                     <div class="badge badge-error">{{$t->priority}}</div>
                                     @else

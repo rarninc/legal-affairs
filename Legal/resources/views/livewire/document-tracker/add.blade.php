@@ -81,13 +81,13 @@
                         <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status <span class="text-red-600">*</span></label>
                         <div class="flex w-full justify-between">
                             <div class="flex font-semibold">
-                                <input wire:click = 'update_date_released("To-Do")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add To-Do" name="radio-2" aria-label="To-Do" value="To-Do" class="btn btn-sm w-40" />
+                                <input wire:click = 'update_date_released("To-Do")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add To-Do" name="radio-2" aria-label="To-Do" value="To-Do" class="btn btn-sm w-36" />
                             </div>
                             <div class="flex font-semibold">
-                                <input wire:click = 'update_date_released("Doing")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add Doing" name="radio-2" aria-label="Doing" value="Doing" class="btn btn-sm w-40" />
+                                <input wire:click = 'update_date_released("Doing")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add Doing" name="radio-2" aria-label="Doing" value="Doing" class="btn btn-sm w-36" />
                             </div>
                             <div class="flex font-semibold">
-                                <input wire:click = 'update_date_released("Done")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add Done" name="radio-2" aria-label="Done" value="Done" class="btn btn-sm w-40" />
+                                <input wire:click = 'update_date_released("Done")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add Done" name="radio-2" aria-label="Done" value="Done" class="btn btn-sm w-36" />
                             </div>                                 
                         </div>
                         @error('status')
@@ -118,14 +118,13 @@
                     @if($this->status == 'Doing')
                         <div class="flex flex-col">
                             <label for="progress" class="block mb-2 text-sm font-medium text-gray-900">Progress</label>
-                            <input wire:model.defer = 'progress_no' type="range" min="0" max="100" value="0" class="range range-xs w-full" step="20" />
+                            <input wire:model.defer = 'progress_no' type="range" min="0" max="80" value="0" class="range range-xs w-full" step="20" />
                             <div class="w-full flex justify-between text-xs px-2">
                                 <span>0</span>
                                 <span>20</span>
                                 <span>40</span>
                                 <span>60</span>
                                 <span>80</span>
-                                <span>100</span>
                             </div>  
                         </div>
                         
