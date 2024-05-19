@@ -9,7 +9,6 @@
                                     <th>#</th>
                                     <th>Task Name</th>
                                     <th class="w-96">Progress</th>
-                                    <th></th>
                                     @include('livewire.table-sort',[
                                         'colname'=> 'priority',
                                         'displayName'=> 'Priority'
@@ -30,9 +29,9 @@
                                 </td>
                                 <td>
                                     <progress class="progress w-full" value="{{$t->progress_no}}" max="100"></progress>
-                                    <!--<input disabled type="range" min="0" max="100" value="{{$t->progress_no}}" class="range range-xs w-full" step="20" />-->
+                                    {{-- <input disabled type="range" min="0" max="100" value="{{$t->progress_no}}" class="range range-xs w-full" step="20" /> --}}
                                 </td>
-                                <th class="text-center"> 
+                                <th class="text-left"> 
                                     @if($t->priority=="Urgent")
                                     <div class="badge badge-error">{{$t->priority}}</div>
                                     @else
