@@ -12,7 +12,7 @@ use Livewire\Component;
 class CenopacCertificate extends Component
 {
     public $employee_name;
-    public $originating_office;
+    public $originating_office="";
     public $position;
     public $purpose;
     public $date_requested;
@@ -28,7 +28,12 @@ class CenopacCertificate extends Component
     {
         $this->id = request()->query('id');
         $this->employee_name = request()->query('employee_name');
-        $this->originating_office = request()->query('originating_office');
+        if(request()->query('originating_office') == null){
+            $this->originating_office = "";
+        }
+        else{
+            $this->originating_office = request()->query('originating_office');
+        }
         $this->position = request()->query('position');
         $this->purpose = request()->query('purpose');
         $this->date_requested = request()->query('date_requested');

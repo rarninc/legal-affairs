@@ -19,10 +19,7 @@
                                             <div class="font-bold opacity-60">{{$todos->tracking_no}}</div>
                                             <div class="text-xl font-bold">{{$todos->document_title}}</div>
                                             <div class="font-semibold opacity-60">{{$todos->document_type}}</div>
-                                        </div>
-                                        <div class="flex items-center justify-end gap-2">
-                                            <div class="badge badge-neutral">-</div>
-                                        </div>
+                                        </div>           
                                     </div>
                                 </div>
                                 @endforeach
@@ -47,10 +44,10 @@
                                         <div class="flex flex-col">
                                             <div class="font-bold opacity-60">{{$doing->tracking_no}}</div>
                                             <div class="text-xl font-bold">{{$doing->document_title}}</div>
-                                            <div class="font-semibold opacity-60">{{$doing->document_type}}</div>
-                                        </div>
-                                        <div class="flex items-center justify-end gap-2">
-                                            <div class="badge badge-neutral">{{$doing->document_status}}</div>
+                                            <div class="flex flex-row justify-between">
+                                                <div class="font-semibold opacity-60">{{$doing->document_type}}</div>
+                                                <div class="badge badge-neutral">{{$doing->document_status}}</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

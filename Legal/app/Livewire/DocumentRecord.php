@@ -138,7 +138,13 @@ class DocumentRecord extends Component
                 'priority' => 'required',
             ]);
         }
-
+        if($this->progress_status != "Doing"){
+            $this->document_status = null;
+        }
+        if($this->progress_status != "Done"){
+            $this->date_released = null;
+        }
+        
         document_record::find($this->id)->update([
             'document_title' => $this->document_title,
             'document_type'=> $this->document_type,
@@ -200,13 +206,14 @@ class DocumentRecord extends Component
         if($progress_status == "Done" && is_null($this->date_released)){
             $this->date_released = date('Y-m-d');
         }
-        elseif(!is_null($this->date_released)){
+        elseif(!(is_null($this->date_released))){
             return;
         }
         else{
             $this->date_released = null;
         }
     }
+    
     public function close(){
         $this->resetExcept('filter_status', 'search');
         $this->resetValidation();

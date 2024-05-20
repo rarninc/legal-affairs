@@ -72,7 +72,7 @@ class GenerateReport extends Component
         $this->counts['doc']['done']['yearly'] = DB::table('document_record')->where('progress_status', 'Done')->whereYear('date_received', $current_year)->count();
         $this->counts['doc']['total']['yearly'] = DB::table('document_record')->whereYear('date_received', $current_year)->count();
         
-        $this->counts['doc']['to-od']['monthly'] = DB::table('document_record')->where('progress_status', 'To-Do')->whereMonth('date_released', $current_month)->whereYear('date_received', $current_year)->count();
+        $this->counts['doc']['to-do']['monthly'] = DB::table('document_record')->where('progress_status', 'To-Do')->whereMonth('date_released', $current_month)->whereYear('date_received', $current_year)->count();
         $this->counts['doc']['doing']['monthly'] = DB::table('document_record')->where('progress_status', 'Doing')->whereMonth('date_received', $current_month)->whereYear('date_received', $current_year)->count();
         $this->counts['doc']['done']['monthly'] = DB::table('document_record')->where('progress_status', 'Done')->whereMonth('date_released', $current_month)->whereYear('date_released', $current_year)->count();
         $this->counts['doc']['total']['monthly'] = DB::table('document_record')->whereMonth('date_received', $current_month)->whereYear('date_received', $current_year)->count();
