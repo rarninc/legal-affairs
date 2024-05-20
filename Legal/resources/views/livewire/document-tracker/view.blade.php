@@ -24,7 +24,7 @@
                                 <div class="h-6 mb-1"><i>To (Name / Office):</i></div>
                                 <div class="h-6 mb-1"><i>Date Received:</i></div>
                                 <div class="h-6 mb-1"><i>Date Released:</i></div>
-                                <div class="h-6 mb-1"><i>Status:</i></div>
+                                <div class="h-6 mb-1"><i>Progress Status:</i></div>
                                 <div class="h-6 mb-1"><i>Remarks:</i></div>
                             </div>
                             <div class="font-bold w-3/4">

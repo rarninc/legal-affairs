@@ -20,7 +20,44 @@
                     </div>
                     <div class="flex flex-col">
                         <label for="office" class="block mb-2 text-sm font-medium text-gray-900">Office / College <span class="text-red-600">*</span> </label>
-                        <input wire:model.defer='originating_office' id="case_title" type="text" placeholder="Office / College" class="input input-bordered w-full input-md" />
+                        <select class="select select-bordered w-full">
+                            <option disabled selected>Pick one</option>
+                            <option disabled class="bg-gray-300 text-black font-semibold">Colleges</option>
+                                <option value="College of Accountancy">College of Accountancy</option>
+                                <option value="College of Architecture and Sustainable Built Environments">College of Architecture and Sustainable Built Environments</option>
+                                <option value="College of Business Administration">College of Business Administration</option>
+                                <option value="College of Education">College of Education</option>
+                                <option value="College of Engineering">College of Engineering</option>
+                                <option value="College of Humanities, Arts & Social Science">College of Humanities, Arts & Social Science</option>
+                                <option value="College of Information Systems & Technology Management">College of Information Systems & Technology Management</option>
+                                <option value="College of Law">College of Law</option>
+                                <option value="College of Medicine">College of Medicine</option>
+                                <option value="College of Nursing">College of Nursing</option>
+                                <option value="College of Physical Therapy">College of Physical Therapy</option>
+                                <option value="College of Public Administration">College of Public Administration</option>
+                                <option value="College of Science">College of Science</option>
+                                <option value="College of Tourism & Hospitality Management">College of Tourism & Hospitality Management</option>
+                                <option value="Graduate School of Law">Graduate School of Law</option>
+                            <option disabled class="bg-gray-300 text-black font-semibold">Offices</option>
+                                <option value="Admission Office">Admission Office</option>
+                                <option value="General Services Office">General Services Office</option>
+                                <option value="Human Resource Management Office">Human Resource Management Office</option>
+                                <option value="Information & Communications Technology Office">Information & Communications Technology Office</option>
+                                <option value="Internal Audit Office">Internal Audit Office</option>
+                                <option value="Office of Guidance & Testing Services">Office of Guidance & Testing Services</option>
+                                <option value="Office of National Service Training Program">Office of National Service Training Program</option>
+                                <option value="Office of Student Development & Services">Office of Student Development & Services</option>
+                                <option value="Office of the University Legal Counsel">Office of the University Legal Counsel</option>
+                                <option value="Physical Facilities Management Office">Physical Facilities Management Office</option>
+                                <option value="Property & Supplies Office">Property & Supplies Office</option>
+                                <option value="University Center for Research and Extension Services">University Center for Research and Extension Services</option>
+                                <option value="University Health Service">University Health Service</option>
+                                <option value="University Library">University Library</option>
+                                <option value="University Registrar">University Registrar</option>
+                                <option value="University Research Center">University Research Center</option>
+                                <option value="University Security Office">University Security Office</option>
+                        </select>
+                        <!--<input wire:model.defer='originating_office' id="case_title" type="text" placeholder="Office / College" class="input input-bordered w-full input-md" />-->
                         @error('originating_office')
                         <span class="text-red-500"> {{$message}}</span>
                         @enderror

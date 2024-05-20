@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <div class="flex flex-col w-full">
-                        <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status <span class="text-red-600">*</span></label>
+                        <label for="progress_status" class="block mb-2 text-sm font-medium text-gray-900">Progress Status <span class="text-red-600">*</span></label>
                         <div class="flex w-full justify-between">
                             <div class="flex font-semibold">
                                 <input wire:click = 'update_date_released("To-Do")' wire:model.live.debounce300ms = 'status' id="status" type="radio" id="Add To-Do" name="radio-2" aria-label="To-Do" value="To-Do" class="btn btn-sm w-36" />
@@ -142,6 +142,21 @@
                                 </div>                                    
                             </div>   
                             @error('priority')
+                            <span class="text-red-500"> {{$message}}</span>
+                            @enderror
+                        </div>
+
+                        <div class="flex flex-col">
+                            <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status </label>
+                            <select wire:model = 'document_type' class="select select-bordered" id="document_type">
+                                <option disabled value="" selected>Pick one</option>
+                                <option value="MOA">For Revision</option>
+                                <option value="Contract">For Initial Review</option>
+                                <option value="Legal Request">For Signatures</option>
+                                <option value="Others">For Further Review</option>
+                                <option value="Others">For Final Clearance</option>
+                            </select>
+                            @error('document_type')
                             <span class="text-red-500"> {{$message}}</span>
                             @enderror
                         </div>

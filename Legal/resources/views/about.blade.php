@@ -186,11 +186,27 @@
                                         </figure>
                                         <div class="card-body items-center text-center p-5 pt-0">
                                             <h2 class="card-title">Full Name</h2>
-                                            <p>University Researcher</p>
+                                            <p>Senior Reproduction Machine Officer</p>
                                         </div>
                                     </div>
                                     <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                                     <a href="#slide3" class="btn btn-circle">❮</a> 
+                                    <a href="#slide5" class="btn btn-circle">❯</a>
+                                    </div>
+                                </div>
+                                <div id="slide5" class="carousel-item relative h-full w-full justify-center items-center py-4">
+                                    <img src="storage/img/plm background.jpg" alt="" class="absolute h-full w-full rounded-xl opacity-50">
+                                    <div class="card w-72 bg-base-100 shadow-xl">
+                                        <figure class="p-5">
+                                            <img src="storage/img/profile.png" alt="Org" class="mask mask-circle" />
+                                        </figure>
+                                        <div class="card-body items-center text-center p-5 pt-0">
+                                            <h2 class="card-title">Full Name</h2>
+                                            <p>Utility Worker</p>
+                                        </div>
+                                    </div>
+                                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                                    <a href="#slide4" class="btn btn-circle">❮</a> 
                                     </div>
                                 </div>
                             </div>
