@@ -24,7 +24,8 @@
                                 <div class="h-6 mb-1"><i>To (Name / Office):</i></div>
                                 <div class="h-6 mb-1"><i>Date Received:</i></div>
                                 <div class="h-6 mb-1"><i>Date Released:</i></div>
-                                <div class="h-6 mb-1"><i>Progress Status:</i></div>
+                                <div class="h-6 mb-1"><i>Progress Status:</i></div>]
+                                <div class="h-6 mb-1"><i>Record Status:</i></div>
                                 <div class="h-6 mb-1"><i>Remarks:</i></div>
                             </div>
                             <div class="font-bold w-3/4">
@@ -36,20 +37,21 @@
                                 <div class="h-6 mb-1">{{$this->date_received}}</div>
                                 <div class="h-6 mb-1">{{$this->date_released}}</div>
                                 <div class="h-6 mb-1 flex items-center"> 
-                                    @if($this->status=="Doing")
+                                    @if($this->progress_status=="Doing")
                                     <div class="badge badge-warning">
-                                        {{ $this->status}}
+                                        {{ $this->progress_status}}
                                 </div>
-                                @elseif($status=="Done")
+                                @elseif($progress_status=="Done")
                                 <div class="badge badge-success">
-                                    {{ $this->status}}
+                                    {{ $this->progress_status}}
                                 </div>
                                 @else
                                 <div class="badge badge-info">
-                                    {{ $this->status}}
+                                    {{ $this->progress_status}}
                                 </div>
                                 @endif
                                 </div>
+                                <div class="h-6 mb-1">{{$this->document_status}}</div>
                                 <div class="h-6 mb-1">{{$this->remarks}}</div>
                                 <div class="h-auto mb-1 scroll-container overflow-auto"></div>
                             </div>
@@ -79,7 +81,8 @@
                                     <th>To (Name / Office)</th>
                                     <th>Date Received</th>
                                     <th>Date Released</th>
-                                    <th>Status</th>
+                                    <th>Progress Status</th>
+                                    <th>Document Status</th>
                                     <th>Remarks</th>
                                 </tr>
                             </thead>
@@ -96,7 +99,8 @@
                                         <td>{{$drc->to_office}}</td>
                                         <td>{{$drc->date_received}}</td>
                                         <td>{{$drc->date_released}}</td>
-                                        <td>{{$drc->Status}}</td>
+                                        <td>{{$drc->progress_status}}</td>
+                                        <td>{{$drc->document_status}}</td>
                                         <td>{{$drc->remarks}}</td>
                                     </tr> 
                                 @endforeach

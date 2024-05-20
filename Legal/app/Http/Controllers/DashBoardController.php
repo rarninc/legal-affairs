@@ -3,32 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\case_matrix;
-use App\Models\cenopac_record;
+use App\Models\cenopac_request;
 use App\Models\document_record;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\On;
 
 class DashBoardController extends Controller
 {
     public function index(){
-
-        $currentYear = Carbon::now()->year;
-        $currentMonth = Carbon::now()->month;
         $month_and_year = Carbon::now()->format('F Y');
-        $case_resolved_count = case_matrix::whereYear('date_issued',$currentYear)
-            ->whereMonth('date_issued', $currentMonth)
+        $case_resolved_count = case_matrix::where('status','On-going')
             ->count();
-        $doc_done_count = document_record::whereYear('date_released',$currentYear)
-            ->whereMonth('date_released', $currentMonth)
-            ->where('status', 'Done')
+        $doc_done_count = document_record::where('progress_status','To-Do')
+            ->orwhere('progress_status', 'Doing')
             ->count();
-        $cenopac_generated_count = cenopac_record::whereYear('date_issued',$currentYear)
-            ->whereMonth('date_issued', $currentMonth)
+        $cenopac_generated_count = cenopac_request::where('status','Pending')
             ->count();
-            $currentYear = Carbon::now()->year;
         
         return view('dashboard', compact('case_resolved_count', 'doc_done_count', 'cenopac_generated_count', 'month_and_year'));
     }

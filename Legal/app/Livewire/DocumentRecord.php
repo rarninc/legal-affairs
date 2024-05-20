@@ -21,7 +21,8 @@ class DocumentRecord extends Component
     public $to_office = null;
     public $date_received = '';
     public $date_released = null;
-    public $status = '';
+    public $progress_status = '';
+    public $document_status = '';
     public $status_before = '';
     public $remarks = '';
     public $priority;
@@ -33,7 +34,7 @@ class DocumentRecord extends Component
         [
             'document_record' => document_record::orderBy('date_received','desc')->search($this->search)
             ->when($this->filter_status !== '', function($query){
-                $query->where('status', $this->filter_status);
+                $query->where('progress_status', $this->filter_status);
             })->get()
         ],
         [
@@ -63,18 +64,24 @@ class DocumentRecord extends Component
         $this->date_received = $dr->date_received;
         $this->date_released = $dr->date_released;
         $this->remarks = $dr->remarks;
-        $this->status = $dr->status;
-        $this->status_before = $this->status;
+        $this->progress_status = $dr->progress_status;
+        $this->document_status = $dr->document_status;
+        $this->status_before = $this->progress_status;
     }
 
     public function create(){
         $this->validate();
         
-        if($this->status == 'To-Do' || $this->status == 'Doing'){
+        if($this->progress_status == 'To-Do' || $this->progress_status == 'Doing'){
             $this->validate([
                 'progress_no' => 'required',
                 'priority' => 'required',
             ]);
+            if($this->progress_status == 'Doing'){
+                $this->validate([
+                    'document_status' => 'required',
+                ]);
+            }
         }
 
         document_record::create([
@@ -85,16 +92,17 @@ class DocumentRecord extends Component
             'to_office' => $this->to_office,
             'date_received' => $this->date_received,
             'date_released' => $this->date_released,
-            'status' => $this->status,
+            'progress_status' => $this->progress_status,
+            'document_status' => $this->document_status,
             'remarks' => $this->remarks,
         ]);
 
-        if($this->status != 'Done'){
+        if($this->progress_status != 'Done'){
             pending_task::create([
                 "table_name" => $this->document_type,
                 "record_id" => $this->tracking_no,
                 "record_title" => $this->document_title,
-                "status" => $this->status,
+                "status" => $this->progress_status,
                 "created_at" => now(),
                 "progress_no" => $this->progress_no,
                 "priority" => $this->priority,
@@ -109,7 +117,8 @@ class DocumentRecord extends Component
             'to_office' ,
             'date_received' ,
             'date_released' ,
-            'status' ,
+            'progress_status' ,
+            'document_status',
             'remarks',
             'progress_no',
             'priority' 
@@ -123,7 +132,7 @@ class DocumentRecord extends Component
     public function update_doc(){
         $this->validate();
 
-        if($this->status == 'To-Do' || $this->status == 'Doing'){
+        if($this->progress_status == 'To-Do' || $this->progress_status == 'Doing'){
             $this->validate([
                 'progress_no' => 'required',
                 'priority' => 'required',
@@ -138,21 +147,22 @@ class DocumentRecord extends Component
             'to_office' => $this->to_office,
             'date_received' => $this->date_received,
             'date_released' => $this->date_released,
-            'status' => $this->status,
+            'progress_status' => $this->progress_status,
+            'document_status' => $this->document_status,
             'remarks' => $this->remarks,
         ]);
-        $this->progress_no = ($this->status == 'To-Do') ? 0 : $this->progress_no;
-        if($this->status == 'Done'){
+        $this->progress_no = ($this->progress_status == 'To-Do') ? 0 : $this->progress_no;
+        if($this->progress_status == 'Done'){
             pending_task::where('record_id', $this->tracking_no)
             ->delete(); 
         }
         elseif($this->status_before == 'Done'){
-            if($this->status == 'To-Do' || $this->status == 'Doing'){
+            if($this->progress_status == 'To-Do' || $this->progress_status == 'Doing'){
                 pending_task::create([
                     "table_name" => $this->document_type,
                     "record_id" => $this->tracking_no,
                     "record_title" => $this->document_title,
-                    "status" => $this->status,
+                    "status" => $this->progress_status,
                     "created_at" => now(),
                     "progress_no" => $this->progress_no,
                     "priority" => $this->priority,
@@ -181,12 +191,13 @@ class DocumentRecord extends Component
         $this->date_received = $dr->date_received;
         $this->date_released = $dr->date_released;
         $this->remarks = $dr->remarks;
-        $this->status = $dr->status;
-        $this->status_before = $this->status;
+        $this->progress_status = $dr->progress_status;
+        $this->document_status = $dr->document_status;
+        $this->status_before = $this->progress_status;
     }
 
-    public function update_date_released($status){
-        if($status == "Done" && is_null($this->date_released)){
+    public function update_date_released($progress_status){
+        if($progress_status == "Done" && is_null($this->date_released)){
             $this->date_released = date('Y-m-d');
         }
         elseif(!is_null($this->date_released)){
@@ -209,7 +220,7 @@ class DocumentRecord extends Component
             'date_received' => 'required',
             'from_office' => 'required|max:100',
             'to_office' => 'max:100',
-            'status' => 'required',
+            'progress_status' => 'required',
             'remarks' => 'max:255',
         ];
     }

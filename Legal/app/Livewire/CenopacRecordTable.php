@@ -13,7 +13,7 @@ class CenopacRecordTable extends Component
     #[Url(history:true)]
     public $search = '';
     #[Url(history:true)]
-    public $perPage = 16;
+    public $perPage = 14;
     #[Url(history:true)]
     public $sortBy = 'date_issued';
     #[Url(history:true)]

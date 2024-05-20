@@ -50,7 +50,7 @@
                                             <div class="font-semibold opacity-60">{{$doing->document_type}}</div>
                                         </div>
                                         <div class="flex items-center justify-end gap-2">
-                                            <div class="badge badge-neutral">For Signature</div>
+                                            <div class="badge badge-neutral">{{$doing->document_status}}</div>
                                         </div>
                                     </div>
                                 </div>

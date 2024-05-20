@@ -2,9 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\case_matrix;
-use App\Models\cenopac_record;
-use App\Models\document_record;
+
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -41,7 +39,7 @@ class DashBoardGraph extends Component
                     document_record 
                 WHERE 
                     YEAR(date_released) = :year 
-                    AND status = 'Done' 
+                    AND progress_status = 'Done' 
                 GROUP BY 
                     MONTH(date_released) 
                 ORDER BY 
