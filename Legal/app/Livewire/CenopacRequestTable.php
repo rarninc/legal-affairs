@@ -2,11 +2,9 @@
 
 namespace App\Livewire;
 
-use App\Models\cenopac_record;
 use App\Models\cenopac_request;
 use App\Models\pending_task;
 use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\Url;
@@ -17,7 +15,7 @@ class CenopacRequestTable extends Component
     #[Url(history:true)]
     public $search = '';
     #[Url(history:true)]
-    public $perPage = 12;
+    public $perPage = 10;
     #[Url(history:true)]
     public $sortBy = 'date_requested';
     #[Url(history:true)]

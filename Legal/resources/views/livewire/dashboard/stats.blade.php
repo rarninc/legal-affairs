@@ -4,7 +4,7 @@
             <div class="stat-figure text-secondary">
                 <img src="storage/img/briefcase.png" alt="" class="h-14">
             </div>
-            <div class="stat-title font-semibold">Pending Cases</div>
+            <div class="stat-title font-semibold">Ongoing Cases</div>
             <div class="stat-value">{{$case_resolved_count}}</div>
             <div class="stat-desc font-semibold">As of {{$month_and_year}}</div>
             <div class="stat-actions">

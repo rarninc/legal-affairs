@@ -60,8 +60,8 @@
                             </div>
                             <div class="flex flex-col">
                                 <label for="originating_office" class="block mb-2 text-sm font-medium text-gray-900">Office / College <span class="text-red-600">*</span> </label>
-                                <select class="select select-bordered w-full">
-                                    <option disabled selected>Pick one</option>
+                                <select wire:model = 'originating_office' class="select select-bordered w-full">
+                                    <option disabled value="" selected>Pick one</option>
                                     <option disabled class="bg-gray-300 text-black font-semibold">Colleges</option>
                                         <option value="College of Accountancy">College of Accountancy</option>
                                         <option value="College of Architecture and Sustainable Built Environments">College of Architecture and Sustainable Built Environments</option>
@@ -175,7 +175,6 @@
             </div>
         </div>
         <!-- Form -->
-        {{$reject}}
         <!-- Toast -->
         @if(session('success'))
             <div class="toast toast-top toast-center"on>

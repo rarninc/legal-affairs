@@ -78,7 +78,8 @@
                         'colname'=> 'date_released',
                         'displayName'=> 'Date Released'
                     ])  
-                        <th>Status</th>
+                        <th>Progress Status</th>
+                        <th>Document Status</th>
                         <th>Remarks</th>            
                     </tr>
                 </thead>
@@ -92,25 +93,26 @@
                         <td>{{$dr->to_office}}</td>
                         <td>{{$dr->date_received}}</td>
                         <td>{{$dr->date_released}}</td>
-                        @if($dr->status=="To-Do")
+                        @if($dr->progress_status=="To-Do")
                             <td>
                                 <div class="badge badge-warning">
-                                    {{ $dr->status}}
+                                    {{ $dr->progress_status}}
                                 </div>
                             </td>
-                        @elseif($dr->status=="Doing")
+                        @elseif($dr->progress_status=="Doing")
                             <td>
                                 <div class="badge badge-warning">
-                                    {{ $dr->status}}
+                                    {{ $dr->progress_status}}
                                 </div>
                             </td>
-                        @elseif($dr->status=="Done")
+                        @elseif($dr->progress_status=="Done")
                             <td>
                                 <div class="badge badge-success">
-                                    {{ $dr->status}}
+                                    {{ $dr->progress_status}}
                                 </div>
                             </td>
                         @endif
+                        <td>{{$dr->document_status}}</td>
                         <td>{{$dr->remarks}}</td>
                     </tr>
                     @endforeach  
@@ -122,13 +124,13 @@
                     <label for="records per page" class="block text-sm font-medium text-gray-900 w-full">Per Page</label>
                     <select wire:model.live='perPage' id="records per page" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-20 p-2.5 ">
                         <option value="10">10</option>
-                        <option value="16">16</option>
+                        <option value="14">14</option>
                         <option value="20">20</option>
                         <option value="25">30</option>
                     </select>
                 </div>
                 <div class="w-full">
-
+                    {{ $document_record->links() }} 
                 </div>   
             </div> 
         </div>

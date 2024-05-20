@@ -5,12 +5,9 @@ namespace App\Livewire;
 use App\Models\case_matrix;
 use App\Models\case_matrix_history;
 use App\Models\pending_task;
-use Illuminate\Support\Facades\Validator;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
-use PhpParser\Node\Expr\FuncCall;
 
 class CaseMatrixTable extends Component
 {
