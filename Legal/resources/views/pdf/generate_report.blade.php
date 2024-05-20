@@ -166,14 +166,14 @@
             <tr>
                 <td class="stats-graph col-1">
                     <ul class="data-overview">
-                        <li><strong>This Year<strong></li>
+                        <li><strong>Year {{now()->format("Y")}}<strong></li>
                         <li>Total Number of Cases: 
                             <strong>{{$counts['case']['total']['yearly']}}</strong>
                         </li>
                         <li>No. of Resolved Cases: 
                             <strong>{{$counts['case']['resolved']['yearly']}}</strong>
                         </li>
-                        <li>No. of Pending Cases: 
+                        <li>No. of Ongoing Cases: 
                             <strong>{{$counts['case']['pending']['yearly']}}</strong>
                         </li>
                     </ul>
@@ -187,7 +187,7 @@
                         <li>No. of Resolved Cases: 
                             <strong>{{$counts['case']['resolved']['monthly']}}</strong>
                         </li>
-                        <li>No. of Pending Cases: 
+                        <li>No. of Ongoing Cases: 
                             <strong>{{$counts['case']['pending']['monthly']}}</strong>
                         </li>
                     </ul>
@@ -214,7 +214,7 @@
             <tr>
                 <td class="stats-graph col-1">
                     <ul class="data-overview">
-                        <li><strong>This Year</strong></li>
+                        <li><strong>Year {{now()->format("Y")}}</strong></li>
                         <li>Total No. of Generated Certificates: 
                             <strong>{{$counts['cenopac']['generated']['yearly']}}</strong>
                         </li>
@@ -262,7 +262,7 @@
             <tr>
                 <td class="stats-graph col-2">
                     <ul class="data-overview">
-                        <li><strong>This Year</strong></li>
+                        <li><strong>Year {{now()->format("Y")}}</strong></li>
                         <li>Total No. of Documents: 
                             <strong>{{$counts['doc']['total']['yearly']}}</strong>
                         </li>
