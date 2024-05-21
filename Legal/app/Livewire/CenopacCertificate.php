@@ -65,14 +65,14 @@ class CenopacCertificate extends Component
                 'status' => 'Denied',
             ]);
             session()->flash('failed', $this->employee_name .' has a record of on-going case/s');
-            // $this->reset();  
+            $this->reset('reject');  
             return redirect()->back();
         }elseif($this->reject){
             $cr_req->update([
                 'status' => 'Denied',
             ]);
             session()->flash('failed', $this->employee_name .' has a record of on-going case/s');
-            // $this->reset();  
+            $this->reset('reject');  
             return redirect()->back();
         }elseif($cr_req != null){
             $cr_req->delete();
