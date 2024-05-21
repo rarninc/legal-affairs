@@ -77,11 +77,6 @@ class DocumentRecord extends Component
                 'progress_no' => 'required',
                 'priority' => 'required',
             ]);
-            if($this->progress_status == 'Doing'){
-                $this->validate([
-                    'document_status' => 'required',
-                ]);
-            }
         }
 
         document_record::create([
