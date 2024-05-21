@@ -18,11 +18,17 @@ class DocumentView extends Component
     public $sortBy = 'tracking_no';
     #[Url(history:true)]
     public $sortDir = 'desc';
+    #[Url(history:true)]
+    public $filter_status = '';
     public function render()
     {
         return view('livewire.document-view',
         [
-            'document_record' => document_record::orderBy($this->sortBy,$this->sortDir)->search($this->search)->paginate($this->perPage)
+            'document_record' => document_record::orderBy($this->sortBy,$this->sortDir)->search($this->search)
+            ->when($this->filter_status !== '', function($query){
+                $query->where('progress_status', $this->filter_status);
+            })  
+            ->paginate($this->perPage)
         ]);
     }
     public function updatedSearch(){
