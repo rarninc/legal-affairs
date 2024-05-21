@@ -24,8 +24,8 @@
                                 <div class="h-6 mb-1"><i>To (Name / Office):</i></div>
                                 <div class="h-6 mb-1"><i>Date Received:</i></div>
                                 <div class="h-6 mb-1"><i>Date Released:</i></div>
-                                <div class="h-6 mb-1"><i>Progress Status:</i></div>]
-                                <div class="h-6 mb-1"><i>Record Status:</i></div>
+                                <div class="h-6 mb-1"><i>Progress Status:</i></div>
+                                <div class="h-6 mb-1"><i>Document Status:</i></div>
                                 <div class="h-6 mb-1"><i>Remarks:</i></div>
                             </div>
                             <div class="font-bold w-3/4">
@@ -51,9 +51,12 @@
                                 </div>
                                 @endif
                                 </div>
-                                <div class="h-6 mb-1">{{$this->document_status}}</div>
-                                <div class="h-6 mb-1">{{$this->remarks}}</div>
-                                <div class="h-auto mb-1 scroll-container overflow-auto"></div>
+                                <div class="h-6 mb-1">
+                                    @if($this->document_status!=null)
+                                    <div class="badge badge-neutral">{{$this->document_status}}</div>
+                                    @endif
+                                </div>
+                                <div class="h-auto mb-1 scroll-container overflow-auto">{{$this->remarks}}</div>
                             </div>
                         </div>
                     </div>         
