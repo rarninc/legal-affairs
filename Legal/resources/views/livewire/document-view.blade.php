@@ -49,7 +49,7 @@
                 <table class="table table-zebra table-pin-rows">
                 <!-- head -->
                 <thead>
-                    <tr class="bg-neutral-300 text-black text-sm">        
+                    <tr class="bg-neutral-300 text-black">        
                     @include('livewire.table-sort',[
                         'colname'=> 'tracking_no',
                         'displayName'=> 'Tracking Number'
@@ -95,7 +95,7 @@
                         <td>{{$dr->date_released}}</td>
                         @if($dr->progress_status=="To-Do")
                             <td>
-                                <div class="badge badge-warning">
+                                <div class="badge badge-info">
                                     {{ $dr->progress_status}}
                                 </div>
                             </td>
