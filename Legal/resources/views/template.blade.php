@@ -87,7 +87,8 @@
                     </a>
                     <!--University Clearance-->
                     <div class="collapse collapse-arrow hover:bg-indigo-900">
-                        <input type="radio" name="my-accordion-1"/> 
+                        <!-- <input type="radio" name="my-accordion-1"/>  -->
+                        <input type="checkbox">
                         <div class="collapse-title flex items-center py-2 px-5 gap-3">
                             <img class="w-6 h-6" src="storage/img/feature icon.png">
                             <span class="w-full text-xl font-normal leading-7 text-white">University Clearance</span>
@@ -107,7 +108,8 @@
                     </a>
                     <!--Document Tracker-->
                     <div class="collapse collapse-arrow hover:bg-indigo-900">
-                        <input type="radio" name="my-accordion-1"/>  
+                        <!-- <input type="radio" name="my-accordion-1"/>   -->
+                        <input type="checkbox">
                         <div class="collapse-title flex items-center py-2 px-5 gap-3">
                             <img class="w-6 h-6" src="storage/img/feature icon.png">
                             <span class="w-full text-xl font-normal leading-7 text-white">Document Manager</span>
