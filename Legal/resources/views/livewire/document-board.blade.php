@@ -46,7 +46,9 @@
                                             <div class="text-xl font-bold">{{$doing->document_title}}</div>
                                             <div class="flex flex-row justify-between">
                                                 <div class="font-semibold opacity-60">{{$doing->document_type}}</div>
-                                                <div class="badge badge-neutral">{{$doing->document_status}}</div>
+                                                @if($doing->document_status != null)
+                                                    <div class="badge badge-neutral">{{$doing->document_status}}</div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
