@@ -25,7 +25,7 @@
         </div>
         
         <!-- Return -->
-        <a href="document_board"> 
+        <a href="document_record"> 
             <button class="btn bg-indigo-800 btn-primary text-white items-center">
                 <img src="storage/img/return icon.png" alt="Return Button">
                 Return
