@@ -52,6 +52,21 @@ class CaseMatrixTable extends Component
             ]);
         }
         case_matrix::create($valid);
+        case_matrix_history::create([
+            'version' => 1,
+            'employee_name' => $this->employee_name,
+            'case_title'=> $this->case_title,
+            'charge' => $this->charge,
+            'offense' => $this->offense,
+            'assigned_officer' => $this->assigned_officer,
+            'case_docket' => $this->case_docket,
+            'date_issued' => $this->date_issued,
+            'date_resolved' => $this->date_resolved,
+            'status' => $this->status,
+            'remarks' => $this->remarks,
+            'action' => 'insert',
+            'dt_updated' => now(),
+        ]);
         if($this->status != 'Resolved'){
             pending_task::create([
                 "table_name" => 'Case Matrix',
@@ -140,7 +155,10 @@ class CaseMatrixTable extends Component
             ]);
         }
 
-        case_matrix::find($this->editing_cm_docket)->update([
+        
+        $existingCase = case_matrix::find($this->editing_cm_docket);
+
+        $updateData = [
             'employee_name' => $this->employee_name,
             'case_title'=> $this->case_title,
             'charge' => $this->charge,
@@ -150,8 +168,38 @@ class CaseMatrixTable extends Component
             'date_resolved' => $this->date_resolved,
             'status' => $this->status,
             'remarks' => $this->remarks,
-        ]);
+        ];
         
+        $changes = false;
+        foreach ($updateData as $key => $value) {
+            if ($existingCase->$key !== $value && !($existingCase->$key === null && $value === null)) {
+                $changes = true;
+                break;
+            }
+        }
+
+        // Only execute update if there are changes
+        if ($changes) {
+            $existingCase->update($updateData);
+
+            $ver_num = case_matrix_history::where('case_docket', $this->case_docket)->max('version');
+
+            case_matrix_history::create([
+                'action' => 'update',
+                'version' => $ver_num + 1,
+                'employee_name' => $this->employee_name,
+                'case_title'=> $this->case_title,
+                'charge' => $this->charge,
+                'offense' => $this->offense,
+                'assigned_officer' => $this->assigned_officer,
+                'case_docket' => $this->case_docket,
+                'date_issued' => $this->date_issued,
+                'date_resolved' => $this->date_resolved,
+                'status' => $this->status,
+                'remarks' => $this->remarks,
+                'dt_updated' => now(),
+            ]);
+        }
         session()->flash('success','Case Updated Successfully');
         
     }

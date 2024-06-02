@@ -92,6 +92,23 @@ class DocumentRecord extends Component
             'remarks' => $this->remarks,
         ]);
 
+        $max_id = document_record::max('id');
+        document_record_history::create([
+            'action' => 'insert',
+            'version' => 1,
+            'id' => $max_id,
+            'document_title' => $this->document_title,
+            'document_type'=> $this->document_type,
+            'tracking_no' => $this->tracking_no,
+            'from_office' => $this->from_office,
+            'to_office' => $this->to_office,
+            'date_received' => $this->date_received,
+            'date_released' => $this->date_released,
+            'progress_status' => $this->progress_status,
+            'document_status' => $this->document_status,
+            'remarks' => $this->remarks,
+            'dt_updated' => now(),
+        ]);
         if($this->progress_status != 'Done'){
             pending_task::create([
                 "table_name" => $this->document_type,
@@ -140,7 +157,9 @@ class DocumentRecord extends Component
             $this->date_released = null;
         }
         
-        document_record::find($this->id)->update([
+        $existing_doc = document_record::find($this->id);
+
+        $doc_updated_data = [
             'document_title' => $this->document_title,
             'document_type'=> $this->document_type,
             'tracking_no' => $this->tracking_no,
@@ -151,7 +170,39 @@ class DocumentRecord extends Component
             'progress_status' => $this->progress_status,
             'document_status' => $this->document_status,
             'remarks' => $this->remarks,
-        ]);
+        ];
+
+        $changes = false;
+        foreach ($doc_updated_data as $key => $value) {
+            if ($existing_doc->$key !== $value && !($existing_doc->$key === null && $value === null)) {
+                $changes = true;
+                break;
+            }
+        }
+
+        if($changes){
+            $existing_doc->update($doc_updated_data);
+
+            $max_id = document_record::where('id', $this->id)->max('id');
+            document_record_history::create([
+                'action' => 'insert',
+                'version' => 1,
+                'id' => $max_id + 1,
+                'document_title' => $this->document_title,
+                'document_type'=> $this->document_type,
+                'tracking_no' => $this->tracking_no,
+                'from_office' => $this->from_office,
+                'to_office' => $this->to_office,
+                'date_received' => $this->date_received,
+                'date_released' => $this->date_released,
+                'progress_status' => $this->progress_status,
+                'document_status' => $this->document_status,
+                'remarks' => $this->remarks,
+                'dt_updated' => now(),
+            ]);
+        }
+
+
         $this->progress_no = ($this->progress_status == 'To-Do') ? 0 : $this->progress_no;
         if($this->progress_status == 'Done'){
             pending_task::where('record_id', $this->tracking_no)

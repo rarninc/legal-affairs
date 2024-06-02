@@ -9,7 +9,7 @@ class case_matrix extends Model
 {
     use HasFactory;
     protected $table = "case_matrix";
-    protected $fillable = ["employee_name", "case_docket", "case_title", "charge", "offense", "status", "remarks", "assigned_officer", "date_issued", "date_resolved"];
+    protected $fillable = ["case_docket", "employee_name", "case_title", "charge", "offense", "status", "remarks", "assigned_officer", "date_issued", "date_resolved"];
     protected $primaryKey = "case_docket";
     public $incrementing = false;
     protected $keyType = 'string';
