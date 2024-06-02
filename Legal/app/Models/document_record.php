@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class document_record extends Model
 {
     use HasFactory;
-    protected $table = "document_record";
+    protected $table = "legal_document_record";
     protected $fillable = ["id","date_received","date_released","document_title","document_type","from_office","to_office","remarks","tracking_no","progress_status","document_status"];
     public $timestamps = false;
     public $incrementing = false;
