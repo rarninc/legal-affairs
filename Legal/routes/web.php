@@ -16,9 +16,9 @@ Route::get('/document_record', [DocumentRecordController::class , 'index']);
 Route::get('/dashboard', [DashBoardController::class , 'index']);
 Route::post('/dashboard/generate_report', [DashBoardController::class , 'generate_report'])->name('dashboard.generate');
 
-Route::get('/', function () {
-    return view('login');
-});
+// Route::get('/', function () {
+
+// });
 
 Route::get('/document_board', function () {
     return view('document_board');

@@ -58,7 +58,7 @@
                         <a href="about"><img class="w-6 h-6" src="storage/img/information.png">About</a>
                         </li>
                         <li>
-                        <a href="/"><img class="w-6 h-5" src="storage/img/logout.png">Logout</a>
+                        <a href=""><img class="w-6 h-5" src="storage/img/logout.png">Logout</a>
                         </li>
                     </ul>
                 </div>
