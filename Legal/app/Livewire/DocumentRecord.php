@@ -183,11 +183,11 @@ class DocumentRecord extends Component
         if($changes){
             $existing_doc->update($doc_updated_data);
 
-            $max_id = document_record::where('id', $this->id)->max('id');
+            $max_id = document_record_history::where('id', $this->id)->max('version');
             document_record_history::create([
-                'action' => 'insert',
-                'version' => 1,
-                'id' => $max_id + 1,
+                'action' => 'update',
+                'version' => $max_id + 1,
+                'id' => $this->id,
                 'document_title' => $this->document_title,
                 'document_type'=> $this->document_type,
                 'tracking_no' => $this->tracking_no,

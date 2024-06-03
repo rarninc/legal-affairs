@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('remarks', 255)->nullable();
             $table->string('progress_status', 5);
             $table->string('document_status', 50)->nullable();
-            $table->string('action', 8)->default('insert');
+            $table->string('action', 8);
             $table->integer('version');
             $table->timestamp('dt_updated')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->primary(['id', 'version']);
