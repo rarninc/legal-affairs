@@ -14,27 +14,21 @@
                 <div class="flex flex-col w-full gap-2">
                     <div class="flex flex-col">
                         <label for="tracking_no" class="block mb-2 text-sm font-medium text-gray-900">Tracking Number <span class="text-red-600">*</span> </label>
-                        <input wire:model.defer = 'tracking_no' id="tracking_no" type="text" placeholder="YYYY-XXXX-XXXX-XXXX" class="input input-bordered w-full input-md" />
+                        <input wire:model.live = 'tracking_no' id="tracking_no" type="text" placeholder="YYYY-XXXX-XXXX-XXXX" class="input input-bordered w-full input-md" />
                         @error('tracking_no')
                         <span class="text-red-500"> {{$message}}</span>
                         @enderror
                     </div>
                     <div class="flex flex-col">
                         <label for="document_title" class="block mb-2 text-sm font-medium text-gray-900">Document Title <span class="text-red-600">*</span> </label>
-                        <input wire:model.defer = 'document_title' id="document_title" type="text" placeholder="Document Title" class="input input-bordered w-full input-md" />
+                        <input wire:model.defer = 'document_title' id="document_title" type="text" placeholder="Document Title" class="input input-bordered w-full input-md" disabled/>
                         @error('document_title')
                         <span class="text-red-500"> {{$message}}</span>
                         @enderror
                     </div>
                     <div class="flex flex-col">
                         <label for="document_type" class="block mb-2 text-sm font-medium text-gray-900">Document Type <span class="text-red-600">*</span> </label>
-                        <select wire:model = 'document_type' class="select select-bordered" id="document_type">
-                            <option disabled value="" selected>Pick one</option>
-                            <option value="MOA">Memorandum of Agreement (MOA)</option>
-                            <option value="Contract">Contract</option>
-                            <option value="Legal Request">Legal Request</option>
-                            <option value="Others">Others</option>
-                        </select>
+                        <input wire:model.defer = 'document_type' id="document_type" type="text" placeholder="Document Type" class="input input-bordered w-full input-md" disabled/>
                         @error('document_type')
                         <span class="text-red-500"> {{$message}}</span>
                         @enderror

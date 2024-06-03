@@ -36,7 +36,7 @@ class DashBoardGraph extends Component
                     MONTH(date_released) AS month, 
                     COUNT(*) AS count 
                 FROM 
-                    document_record 
+                    legal_document_record 
                 WHERE 
                     YEAR(date_released) = :year 
                     AND progress_status = 'Done' 

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\document_record;
 use App\Models\document_record_history;
+use App\Models\drs_documents;
 use App\Models\pending_task;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -218,12 +219,23 @@ class DocumentRecord extends Component
         return [
             'document_title'=> 'required|max:100',
             'document_type'=> 'required|max:100',
-            'tracking_no' => ['required','max:20','regex:/^\d{4}-\d{4}-\d{4}-\d{4}+$/'],
+            'tracking_no' => ['required','max:255','regex:/^\d{4}-\d{4}-\d{4}-\d{4}+$/','exists:drs_documents,tracking_number'],
             'date_received' => 'required',
             'from_office' => 'required|max:100',
             'to_office' => 'max:100',
             'progress_status' => 'required',
             'remarks' => 'max:255',
         ];
+    }
+    public function updatedTrackingNo($value)
+    {
+        $trackingNumber = drs_documents::where('tracking_number', $value)->first();
+        if ($trackingNumber) {
+            $this->document_type = $trackingNumber->type;
+            $this->document_title = $trackingNumber->title;
+        } else {
+            $this->document_type = '';
+            $this->document_title = '';
+        }
     }
 }
