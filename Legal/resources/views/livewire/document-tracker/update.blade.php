@@ -79,7 +79,7 @@
                                 <input wire:click = 'update_date_released("To-Do")' wire:model.live.debounce300ms = 'progress_status' id="status" type="radio" id="Add To-Do" name="radio-2" aria-label="To-Do" value="To-Do" class="btn btn-sm w-36" />
                             </div>
                             <div class="flex font-semibold">
-                                <input wire:click = 'update_date_released("Doing")' wire:model.live.debounce300ms = 'progress_status' id="status" type="radio" id="Add Doing" name="radio-2" aria-label="Doing" value="Doing" class="btn btn-sm w-36" />
+                                <input wire:click = 'update_date_released("In-progress")' wire:model.live.debounce300ms = 'progress_status' id="status" type="radio" id="Add In-Progress" name="radio-2" aria-label="In-Progress" value="In-Progress" class="btn btn-sm w-36" />
                             </div>
                             <div class="flex font-semibold">
                                 <input wire:click = 'update_date_released("Done")' wire:model.live.debounce300ms = 'progress_status' id="status" type="radio" id="Add Done" name="radio-2" aria-label="Done" value="Done" class="btn btn-sm w-36" />
@@ -113,7 +113,7 @@
                         </div>
                     @endif
 
-                    @if($this->progress_status == 'Doing')
+                    @if($this->progress_status == 'In-Progress')
                         <div class="flex flex-col">
                             <label for="progress" class="block mb-2 text-sm font-medium text-gray-900">Progress</label>
                             <input wire:model.defer = 'progress_no' type="range" min="0" max="80" value="0" class="range range-xs w-full" step="20" />

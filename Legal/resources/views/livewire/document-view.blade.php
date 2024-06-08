@@ -53,7 +53,7 @@
                     <select wire:model.live="filter_status" id="filter_status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-40 p-2.5 ">
                         <option value='' select>All</option>
                         <option value="To-Do">To-Do</option>
-                        <option value="Doing">Doing</option>
+                        <option value="In-Progress">In-Progress</option>
                         <option value="Done">Done</option>
                     </select>
                 </div>
@@ -113,7 +113,7 @@
                                     {{ $dr->progress_status}}
                                 </div>
                             </td>
-                        @elseif($dr->progress_status=="Doing")
+                        @elseif($dr->progress_status=="In-Progress")
                             <td>
                                 <div class="badge badge-warning">
                                     {{ $dr->progress_status}}
