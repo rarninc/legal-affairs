@@ -38,15 +38,15 @@
                                 <div class="h-6 mb-1">{{$this->date_released}}</div>
                                 <div class="h-6 mb-1 flex items-center"> 
                                     @if($this->progress_status=="In-Progress")
-                                    <div class="badge badge-warning">
+                                    <div class="badge badge-warning bg-yellow-400">
                                         {{ $this->progress_status}}
                                 </div>
                                 @elseif($progress_status=="Done")
-                                <div class="badge badge-success">
+                                <div class="badge badge-success bg-green-400">
                                     {{ $this->progress_status}}
                                 </div>
                                 @else
-                                <div class="badge badge-info">
+                                <div class="badge badge-info bg-blue-400">
                                     {{ $this->progress_status}}
                                 </div>
                                 @endif

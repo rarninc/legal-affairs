@@ -12,8 +12,8 @@
             <div class="flex gap-4 my-4">
                 <div class="flex flex-col w-full gap-2">
                     <div class="flex flex-col">
-                        <label for="employee_name" class="block mb-2 text-sm font-medium text-gray-900">Employee Name <span class="text-red-600">*</span> </label>
-                        <input wire:model.defer='employee_name' id="employee_name" type="text" placeholder="Name" class="input input-bordered w-full input-md" />
+                        <label for="employee_name" class="block mb-2 text-sm font-medium text-gray-900">Employee Name <span class="italic">(FN, MN, LN)</span> <span class="text-red-600">*</span> </label>
+                        <input wire:model.defer='employee_name' id="employee_name" type="text" placeholder="e.g Juan Ponce Dela Cruz" class="input input-bordered w-full input-md" />
                         @error('employee_name')
                         <span class="text-red-500"> {{$message}}</span>
                         @enderror
@@ -79,7 +79,7 @@
                     <div class="flex gap-4 items-center">
                         <div class="flex flex-col w-full">
                             <label for="date_requested" class="block mb-2 text-sm font-medium text-gray-900">Date Requested <span class="text-red-600">*</span></label>
-                            <input id="date_requested" type="date" value="{{$this->date_requested}}" placeholder="Date Issued" class="input input-bordered w-full input-md" disabled/>
+                            <input id="date_requested" type="date" value="{{$this->date_requested}}" placeholder="Date Issued" class="input input-bordered w-full input-md disabled:text-black" disabled/>
                         </div>
                     </div>
                     
@@ -90,7 +90,7 @@
                                 <input wire:model = 'priority' name = "priority" id="priority" type="radio" id="Add Urgent" name="radio-2" aria-label="Urgent" value="Urgent" class="btn btn-sm btn-wide" />
                             </div>
                             <div class="flex font-semibold">
-                                <input wire:model = 'priority' name = "priority" id="priority" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Nonurgent" value="Non-Urgent" class="btn btn-sm btn-wide" />
+                                <input wire:model = 'priority' name = "priority" id="priority" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Non-Urgent" value="Non-Urgent" class="btn btn-sm btn-wide" />
                             </div>
                             @error('priority')
                                 <span class="text-red-500"> {{$message}}</span>

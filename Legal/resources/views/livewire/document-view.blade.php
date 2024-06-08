@@ -109,19 +109,19 @@
                         <td>{{$dr->date_released}}</td>
                         @if($dr->progress_status=="To-Do")
                             <td>
-                                <div class="badge badge-info">
+                                <div class="badge badge-info bg-blue-400">
                                     {{ $dr->progress_status}}
                                 </div>
                             </td>
                         @elseif($dr->progress_status=="In-Progress")
                             <td>
-                                <div class="badge badge-warning">
+                                <div class="badge badge-warning bg-yellow-400 h-fit">
                                     {{ $dr->progress_status}}
                                 </div>
                             </td>
                         @elseif($dr->progress_status=="Done")
                             <td>
-                                <div class="badge badge-success">
+                                <div class="badge badge-success bg-green-400">
                                     {{ $dr->progress_status}}
                                 </div>
                             </td>
