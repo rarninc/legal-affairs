@@ -37,17 +37,17 @@
                         
                         <div class="scroll-container w-full h-full rounded-xl overflow-x-auto">
                             <div class="flex flex-col h-1 gap-3 p-5">
-                                <!-- Document "Doing" Card -->
-                                @foreach ($dr_doing as $doing)
+                                <!-- Document "In-Progress" Card -->
+                                @foreach ($dr_in_progress as $in_progress)
                                 <div class="card h-fit bg-warning shadow-xl relative">
                                     <div class="card-body h-fit flex p-3">
                                         <div class="flex flex-col">
-                                            <div class="font-bold opacity-60">{{$doing->tracking_no}}</div>
-                                            <div class="text-xl font-bold">{{$doing->document_title}}</div>
+                                            <div class="font-bold opacity-60">{{$in_progress->tracking_no}}</div>
+                                            <div class="text-xl font-bold">{{$in_progress->document_title}}</div>
                                             <div class="flex flex-row justify-between">
-                                                <div class="font-semibold opacity-60">{{$doing->document_type}}</div>
-                                                @if($doing->document_status != null)
-                                                    <div class="badge badge-neutral">{{$doing->document_status}}</div>
+                                                <div class="font-semibold opacity-60">{{$in_progress->document_type}}</div>
+                                                @if($in_progress->document_status != null)
+                                                    <div class="badge badge-neutral">{{$in_progress->document_status}}</div>
                                                 @endif
                                             </div>
                                         </div>

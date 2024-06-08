@@ -37,7 +37,7 @@
                                 <div class="h-6 mb-1">{{$this->date_received}}</div>
                                 <div class="h-6 mb-1">{{$this->date_released}}</div>
                                 <div class="h-6 mb-1 flex items-center"> 
-                                    @if($this->progress_status=="Doing")
+                                    @if($this->progress_status=="In-Progress")
                                     <div class="badge badge-warning">
                                         {{ $this->progress_status}}
                                 </div>

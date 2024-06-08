@@ -267,7 +267,7 @@
                             <strong>{{$counts['doc']['total']['yearly']}}</strong>
                         </li>
                         <li>No. of Documents to be Processed: 
-                            <strong>{{$counts['doc']['to-do']['yearly'] + $counts['doc']['doing']['yearly']}}</strong>
+                            <strong>{{$counts['doc']['to-do']['yearly'] + $counts['doc']['in-progress']['yearly']}}</strong>
                         </li>
                         <li>No. of Processed Documents: 
                             <strong>{{$counts['doc']['done']['yearly']}}</strong>
@@ -281,7 +281,7 @@
                             <strong>{{$counts['doc']['total']['monthly']}}</strong>
                         </li>
                         <li>No. of Documents to be Processed: 
-                            <strong>{{$counts['doc']['to-do']['monthly'] + $counts['doc']['doing']['monthly']}}</strong>
+                            <strong>{{$counts['doc']['to-do']['monthly'] + $counts['doc']['in-progress']['monthly']}}</strong>
                         </li>
                         <li>No. of Processed Documents: 
                             <strong>{{$counts['doc']['done']['monthly']}}</strong>

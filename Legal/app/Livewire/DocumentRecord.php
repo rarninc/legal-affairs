@@ -73,7 +73,7 @@ class DocumentRecord extends Component
     public function create(){
         $this->validate();
         
-        if($this->progress_status == 'To-Do' || $this->progress_status == 'Doing'){
+        if($this->progress_status == 'To-Do' || $this->progress_status == 'In-Progress'){
             $this->validate([
                 'progress_no' => 'required',
                 'priority' => 'required',
@@ -128,13 +128,13 @@ class DocumentRecord extends Component
     public function update_doc(){
         $this->validate();
 
-        if($this->progress_status == 'To-Do' || $this->progress_status == 'Doing'){
+        if($this->progress_status == 'To-Do' || $this->progress_status == 'In-Progress'){
             $this->validate([
                 'progress_no' => 'required',
                 'priority' => 'required',
             ]);
         }
-        if($this->progress_status != "Doing"){
+        if($this->progress_status != "In-Progress"){
             $this->document_status = null;
         }
         if($this->progress_status != "Done"){
@@ -159,7 +159,7 @@ class DocumentRecord extends Component
             ->delete(); 
         }
         elseif($this->status_before == 'Done'){
-            if($this->progress_status == 'To-Do' || $this->progress_status == 'Doing'){
+            if($this->progress_status == 'To-Do' || $this->progress_status == 'In-Progress'){
                 pending_task::create([
                     "table_name" => $this->document_type,
                     "record_id" => $this->tracking_no,

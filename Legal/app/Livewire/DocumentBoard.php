@@ -13,7 +13,7 @@ class DocumentBoard extends Component
     {
         return view('livewire.document-board', [
             "dr_to_do" => document_record::where("progress_status","To-Do")->get(),
-            "dr_doing" => document_record::where("progress_status","Doing")->get(),
+            "dr_in_progress" => document_record::where("progress_status","In-Progress")->get(),
         ]
         );
     }
