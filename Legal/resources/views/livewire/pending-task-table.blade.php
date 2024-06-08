@@ -31,11 +31,11 @@
                         <progress class="progress w-full" value="{{$t->progress_no}}" max="100"></progress>
                         {{-- <input disabled type="range" min="0" max="100" value="{{$t->progress_no}}" class="range range-xs w-full" step="20" /> --}}
                     </td>
-                    <th class="text-left"> 
+                    <th> 
                         @if($t->priority=="Urgent")
-                        <div class="badge badge-error">{{$t->priority}}</div>
+                        <div class="badge badge-error bg-red-400 w-32">{{$t->priority}}</div>
                         @else
-                        <div class="badge badge-warning">{{$t->priority}}</div>
+                        <div class="badge badge-warning bg-yellow-400 w-32">{{$t->priority}}</div>
                         @endif
                     </th>
                 </tr>

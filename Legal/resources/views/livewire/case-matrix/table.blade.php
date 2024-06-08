@@ -36,13 +36,13 @@
                         <td>{{ $cm->case_title}}</td>
                         @if($cm->status=="On-going")
                         <td>
-                            <div class="badge badge-warning">
+                            <div class="badge badge-warning bg-yellow-400">
                                 {{ $cm->status}}
                             </div>
                         </td>
                         @elseif($cm->status=="Resolved")
                         <td>
-                            <div class="badge badge-success">
+                            <div class="badge badge-success bg-green-400">
                                 {{ $cm->status}}
                             </div>
                         </td>
