@@ -15,21 +15,21 @@
                 <div class="flex flex-col w-full gap-2">
                     <div class="flex flex-col">
                         <label for="tracking_no" class="block mb-2 text-sm font-medium text-gray-900">Tracking Number <span class="text-red-600">*</span> </label>
-                        <input wire:model.defer = 'tracking_no' id="tracking_no" type="text" placeholder="YYYY-XXXX-XXXX-XXXX" class="input input-bordered w-full input-md" disabled/>
+                        <input wire:model.defer = 'tracking_no' id="tracking_no" type="text" placeholder="YYYY-XXXX-XXXX-XXXX" class="input input-bordered w-full input-md disabled:text-black" disabled/>
                         @error('tracking_no')
                         <span class="text-red-500"> {{$message}}</span>
                         @enderror
                     </div>
                     <div class="flex flex-col">
                         <label for="document_title" class="block mb-2 text-sm font-medium text-gray-900">Document Title <span class="text-red-600">*</span> </label>
-                        <input wire:model.defer = 'document_title' id="document_title" type="text" placeholder="Document Title" class="input input-bordered w-full input-md" disabled />
+                        <input wire:model.defer = 'document_title' id="document_title" type="text" placeholder="Document Title" class="input input-bordered w-full input-md disabled:text-black" disabled />
                         @error('document_title')
                         <span class="text-red-500"> {{$message}}</span>
                         @enderror
                     </div>
                     <div class="flex flex-col">
                         <label for="document_type" class="block mb-2 text-sm font-medium text-gray-900">Document Type <span class="text-red-600">*</span> </label>
-                        <input wire:model.defer = 'document_type' id="document_type" type="text" placeholder="Document Type" class="input input-bordered w-full input-md" disabled/>
+                        <input wire:model.defer = 'document_type' id="document_type" type="text" placeholder="Document Type" class="input input-bordered w-full input-md disabled:text-black" disabled/>
                         @error('document_type')
                         <span class="text-red-500"> {{$message}}</span>
                         @enderror
@@ -65,7 +65,7 @@
                             @if ($this->progress_status == 'Done')
                                 <input wire:model.live.debounce150ms = 'date_released' id="date_released" type="date" placeholder="Date Released" class="input input-bordered w-full input-md" />
                             @else
-                                <input value = {{null}} id="date_released" type="date" placeholder="Date Released" class="input input-bordered w-full input-md" disabled/>
+                                <input value = {{null}} id="date_released" type="date" placeholder="Date Released" class="input input-bordered w-full input-md disabled:text-black" disabled/>
                             @endif
                             @error('date_released')
                             <span class="text-red-500"> {{$message}}</span>
@@ -104,7 +104,7 @@
                                     <input wire:model.defer = 'priority' name = "priority" id="priority" type="radio" id="Add Urgent" name="radio-2" aria-label="Urgent" value="Urgent" class="btn btn-sm btn-wide" />
                                 </div>
                                 <div class="flex font-semibold">
-                                    <input wire:model.defer = 'priority' name = "priority" id="priority" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Nonurgent" value="Non-Urgent" class="btn btn-sm btn-wide" />
+                                    <input wire:model.defer = 'priority' name = "priority" id="priority" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Non-Urgent" value="Non-Urgent" class="btn btn-sm btn-wide" />
                                 </div>                                    
                             </div>   
                         @error('priority')
@@ -132,7 +132,7 @@
                                     <input wire:model.defer = 'priority' name = "priority" id="priority" type="radio" id="Add Urgent" name="radio-2" aria-label="Urgent" value="Urgent" class="btn btn-sm btn-wide" />
                                 </div>
                                 <div class="flex font-semibold">
-                                    <input wire:model.defer = 'priority' name = "priority" id="priority" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Nonurgent" value="Non-Urgent" class="btn btn-sm btn-wide" />
+                                    <input wire:model.defer = 'priority' name = "priority" id="priority" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Non-Urgent" value="Non-Urgent" class="btn btn-sm btn-wide" />
                                 </div>                                    
                             </div>   
                             @error('priority')
@@ -140,7 +140,7 @@
                             @enderror
                         </div>
                         <div class="flex flex-col">
-                            <label for="document_status" class="block mb-2 text-sm font-medium text-gray-900">Document Status</label>
+                            <label for="document_status" class="block mb-2 text-sm font-medium text-gray-900">Document Status <span class="text-red-600">*</span></label>
                             <select wire:model = 'document_status' class="select select-bordered" id="document_status">
                                 <option value="{{null}}" disabled selected>Pick one</option>
                                 <option value="{{null}}" selected>N/A </option>

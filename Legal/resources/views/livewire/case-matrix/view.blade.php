@@ -39,11 +39,11 @@
                                 <div class="h-6 mb-1">{{$date_resolved}}</div>
                                 <div class="h-6 mb-1 flex items-center">
                                     @if($status=="On-going")
-                                    <div class="badge badge-warning">
+                                    <div class="badge badge-warning bg-yellow-400">
                                         {{ $status}}
                                     </div>
                                     @elseif($status=="Resolved")
-                                    <div class="badge badge-success">
+                                    <div class="badge badge-success bg-green-400">
                                         {{ $status}}
                                     </div>
                                     @endif
