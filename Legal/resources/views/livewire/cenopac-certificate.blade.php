@@ -52,8 +52,8 @@
                     <div class="flex gap-4 my-4 px-20">
                         <div class="flex flex-col w-full gap-2">
                             <div class="flex flex-col">
-                                <label for="employee_name" class="block mb-2 text-sm font-medium text-gray-900">Name <span class="text-red-600">*</span> </label>
-                                <input wire:model.live='employee_name' id="employee_name" type="text" placeholder="Name" class="input input-bordered w-full input-md" />
+                                <label for="employee_name" class="block mb-2 text-sm font-medium text-gray-900">Name <span class="italic">(FN, MN, LN)</span> <span class="text-red-600">*</span> </label>
+                                <input wire:model.live='employee_name' id="employee_name" type="text" placeholder="e.g Juan Ponce Dela Cruz" class="input input-bordered w-full input-md" />
                                 @error('employee_name')
                                 <span class="text-red-500"> {{$message}}</span>
                                 @enderror
