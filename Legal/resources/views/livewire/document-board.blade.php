@@ -43,7 +43,10 @@
                                     <div class="card-body h-fit flex p-3">
                                         <div class="flex flex-col">
                                             <div class="font-bold opacity-60">{{$in_progress->tracking_no}}</div>
-                                            <div class="text-xl font-bold">{{$in_progress->document_title}}</div>
+                                            <div class="flex flex-row justify-between">
+                                                <div class="text-xl font-bold">{{$in_progress->document_title}}</div>
+                                                <div class="badge badge-neutral">{{App\Models\pending_task::where('record_id', $in_progress->tracking_no)->where('status',"In-Progress")->first()->progress_no}}% Done</div>
+                                            </div>
                                             <div class="flex flex-row justify-between">
                                                 <div class="font-semibold opacity-60">{{$in_progress->document_type}}</div>
                                                 @if($in_progress->document_status != null)
