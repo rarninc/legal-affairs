@@ -143,7 +143,8 @@
                         <div class="flex flex-col">
                             <label for="document_status" class="block mb-2 text-sm font-medium text-gray-900">Document Status</label>
                             <select wire:model = 'document_status' class="select select-bordered" id="document_status">
-                                <option value="{{null}}" selected>Pick one</option>
+                                <option value="{{null}}" disabled selected>Pick one</option>
+                                <option value="{{null}}" selected>N/A </option>
                                 <option value="For Revision">For Revision</option>
                                 <option value="For Initial Review">For Initial Review</option>
                                 <option value="For Signatures">For Signatures</option>
