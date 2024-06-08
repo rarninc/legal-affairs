@@ -29,9 +29,9 @@
                 </div>
                 <!-- TO-DO -->
 
-                <!-- DOING -->
+                <!-- In-Progress -->
                 <div class="h-full flex flex-col w-1/2 gap-1">
-                    <div class="divider w-full text-3xl font-semibold text-warning"><i>Doing</i></div>
+                    <div class="divider w-full text-3xl font-semibold text-warning"><i>In-Progress</i></div>
                     <div class="h-full w-full flex flex-col relative">
                         <div class="card w-full h-full bg-warning opacity-20 shadow-inner absolute"></div>
                         
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- DOING -->
+                <!-- In-Progress -->
             </div>
         </div>         
     </div>
