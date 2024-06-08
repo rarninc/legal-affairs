@@ -55,9 +55,8 @@ class DocumentRecord extends Component
         if ($pending_task->isNotEmpty()) {
             $this->progress_no = $pending_task->first()->progress_no;
             $this->priority = $pending_task->first()->priority;
-        } else {
-            $this->progress_no = 0;
-        }
+        } 
+        
         $this->document_title = $dr->document_title;
         $this->document_type = $dr->document_type;
         $this->tracking_no = $dr->tracking_no;
@@ -74,12 +73,18 @@ class DocumentRecord extends Component
 
     public function create(){
         $this->validate();
+        $this->validate([
+            'tracking_no'=>'unique:legal_document_record',
+        ]);
         
         if($this->progress_status == 'To-Do' || $this->progress_status == 'In-Progress'){
             $this->validate([
                 'progress_no' => 'required',
                 'priority' => 'required',
             ]);
+        }
+        if($this->progress_status == 'In-Progress'){
+            $this->progress_no = 20;
         }
 
         document_record::create([
@@ -121,7 +126,7 @@ class DocumentRecord extends Component
             'progress_no',
             'priority' 
         );
-        session()->flash('success','CeNoPac Request Added Successfully');
+        session()->flash('success','Document Record Added Successfully');
         $this->dispatch('rerender');
         return redirect()->back();
 
@@ -136,6 +141,10 @@ class DocumentRecord extends Component
                 'priority' => 'required',
             ]);
         }
+        if($this->progress_status == 'In-Progress'){
+            $this->progress_no = 20;
+        }
+        
         if($this->progress_status != "In-Progress"){
             $this->document_status = null;
         }
@@ -175,6 +184,7 @@ class DocumentRecord extends Component
         }
         else{
             pending_task::where('record_id', $this->tracking_no)->update([
+                'status' => $this->progress_status,
                 'progress_no' => $this->progress_no,
                 'priority' => $this->priority,
             ]);
