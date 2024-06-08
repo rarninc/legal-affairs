@@ -134,7 +134,7 @@
 
     <p class="certification-content">{{$date_issued}}, City of Manila.</p>
     
-    <p class="signature">Carlo Florendo C. Castro <br><span style="font-weight: normal;">University Legal Counsel</span></p>
+    <p class="signature">{{$legal_counsel}} <br><span style="font-weight: normal;">University Legal Counsel</span></p>
 </body>
 
 </html>

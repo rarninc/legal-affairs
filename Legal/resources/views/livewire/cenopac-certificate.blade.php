@@ -199,7 +199,7 @@
         <!-- Toast -->
         <!--PDF Viewer-->
         <div class="h-full w-2/5">
-            <object data="storage/pdf/TEMPLATE.pdf" type="application/pdf" class="flex justify-center items-center h-full w-full">
+            <object data="storage/pdf/CENOPAC_Template.pdf" type="application/pdf" class="flex justify-center items-center h-full w-full">
                 <p class="py-2 px-4 bg-gold rounded-md">Unable to display PDF file. <a href=""><strong><u>Download</u></strong></a> instead.</p>
             </object>
         </div>
