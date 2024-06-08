@@ -25,6 +25,7 @@ class DocumentRecord extends Component
     public $progress_status = '';
     public $document_status = '';
     public $status_before = '';
+    public $date_released_before = '';
     public $remarks = '';
     public $priority;
     public $progress_no = 0;
@@ -68,6 +69,7 @@ class DocumentRecord extends Component
         $this->progress_status = $dr->progress_status;
         $this->document_status = $dr->document_status;
         $this->status_before = $this->progress_status;
+        $this->date_released_before = $this->date_released;
     }
 
     public function create(){
@@ -199,14 +201,15 @@ class DocumentRecord extends Component
     }
 
     public function update_date_released($progress_status){
-        if($progress_status == "Done" && is_null($this->date_released)){
+         
+        if($progress_status == "Done" && (is_null($this->date_released_before) || is_null($this->date_released))){
             $this->date_released = date('Y-m-d');
         }
-        elseif(!(is_null($this->date_released))){
-            return;
+        elseif($progress_status == "In-Progress" || $progress_status == "To-Do"){
+            $this->date_released = null;
         }
         else{
-            $this->date_released = null;
+            $this->date_released = $this->date_released_before;
         }
     }
     
