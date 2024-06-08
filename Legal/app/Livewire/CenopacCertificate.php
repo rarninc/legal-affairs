@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\case_matrix;
 use App\Models\cenopac_record;
 use App\Models\cenopac_request;
+use App\Models\employees;
 use App\Models\pending_task;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Livewire\Component;
@@ -19,6 +20,7 @@ class CenopacCertificate extends Component
     public $date_issued;
     public $reject = false;
     public $id;
+    public $legal_counsel = '';
     
     public function render()
     {
@@ -94,18 +96,29 @@ class CenopacCertificate extends Component
         
         $this->date_issued = strtotime($this->date_issued);
         $this->date_issued = date('F d, Y', $this->date_issued);
+        
+        $this->legal_counsel = employees::where('current_position', 'University Legal Counsel')->first();
+        $middle_name = ' ';
+        if(!(is_null($this->legal_counsel->middle_name))){
+            $middle_name = mb_substr($this->legal_counsel->middle_name, 0, 1) . '. ';
+        }
+        
+        $this->legal_counsel = $this->legal_counsel->first_name . ' ' . $middle_name. $this->legal_counsel->last_name;  
 
         $cenopac = Pdf::loadView('pdf.generate_cenopac_cert', [
             'employee_name' => $this->employee_name,
             'originating_office' => $this->originating_office,
             'position' => $this->position,
             'date_issued' => $this->date_issued,
+            'legal_counsel' => $this->legal_counsel,
         ]);
 
+        
         $this->reset();
         return response()->streamDownload(function () use ($cenopac) {
             echo $cenopac->stream();
             }, 'cenopac_cert.pdf');
+        
         
 
     }
