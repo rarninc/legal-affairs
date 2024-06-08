@@ -12,7 +12,7 @@
                 <img src="storage/img/PLM LOGO.png" alt="" class="absolute h-full w-auto opacity-40 p-5">
                 <div class="card-body flex flex-row w-full py-5 px-20 text-white relative justify-between items-center">
                     <div class ="flex flex-col">
-                        <h3 class="text-5xl font-semibold relative">Hello, Carlo!</h3>
+                        <h3 class="text-5xl font-semibold relative">Hello, {{$user_name}}</h3>
                         <p class="text-xl relative">What do you want to do today?</p>
                     </div>
 
