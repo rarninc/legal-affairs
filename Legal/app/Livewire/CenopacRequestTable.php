@@ -75,6 +75,12 @@ class CenopacRequestTable extends Component
                 "priority" => $this->priority,
             ]);
         }
+        else{
+            pending_task::where('record_id', (string)$this->editing_id)->update([
+                "record_title" => $this->employee_name,
+                "priority" => $this->priority,
+            ]);
+        }
 
         session()->flash('success','CeNoPac Request Updated Successfully');
     }
