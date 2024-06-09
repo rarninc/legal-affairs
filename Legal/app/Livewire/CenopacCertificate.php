@@ -98,9 +98,9 @@ class CenopacCertificate extends Component
         $this->date_issued = date('F d, Y', $this->date_issued);
         
         $this->legal_counsel = employees::where('current_position', 'University Legal Counsel')->first();
-        $middle_name = ' ';
-        if(!(is_null($this->legal_counsel->middle_name))){
-            $middle_name = mb_substr($this->legal_counsel->middle_name, 0, 1) . '. ';
+        $middle_name = mb_substr($this->legal_counsel->middle_name, 0, 1) . '. ';
+        if($this->legal_counsel->middle_name == ''){
+            $middle_name = ' ';
         }
         
         $this->legal_counsel = $this->legal_counsel->first_name . ' ' . $middle_name. $this->legal_counsel->last_name;  
