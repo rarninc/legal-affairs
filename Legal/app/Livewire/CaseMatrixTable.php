@@ -135,6 +135,7 @@ class CaseMatrixTable extends Component
         }
         else{
             pending_task::where('record_id', $this->editing_cm_docket)->update([
+                'record_title' => $this->case_title,
                 'progress_no' => $this->progress_no,
                 'priority' => $this->priority,
             ]);

@@ -115,7 +115,7 @@
                                     <input wire:model = 'priority' name = "priority" id="status" type="radio" id="Add Urgent" name="radio-2" aria-label="Urgent" value="Urgent" class="btn btn-sm btn-wide" />
                                 </div>
                                 <div class="flex font-semibold">
-                                    <input wire:model = 'priority' name = "priority" id="status" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Nonurgent" value="Non-Urgent" class="btn btn-sm btn-wide" />
+                                    <input wire:model = 'priority' name = "priority" id="status" type="radio" id="Add Nonurgent" name="radio-2" aria-label="Non-Urgent" value="Non-Urgent" class="btn btn-sm btn-wide" />
                                 </div>                                    
                             </div>   
                             @error('priority')
