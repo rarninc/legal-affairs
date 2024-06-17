@@ -2,6 +2,8 @@
 
 Office of the University Legal Counsel's legal affairs system that handles administrative cases, processes university clearance, and tracks document records going in-and-out of the legal office that is only exclusive to the employees within the legal office.
 
+## Preview
+![oulc_dashboard](https://github.com/rarninc/legal-affairs/assets/92510338/f0553895-7ca2-4cc7-a6dc-ccffbb20ef71)
 ## Prerequisities
 
 * [Laravel](https://laravel.com/docs/11.x/installation#creating-a-laravel-project)
