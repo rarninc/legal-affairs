@@ -69,7 +69,7 @@ Enable php gd extension:
       <td align="center" valign="top" width="20%"><a href="https://github.com/rarninc">
          <img src="https://avatars.githubusercontent.com/u/150262290?v=4" width="100px;" alt="Richard Inciong"/>
          <br /><sub><b>Richard Aaron Inciong</b></sub></a><br />
-         <span>UI/UX Designer</span>
+         <span>UI/UX Designer & Frontend Developer</span>
       </td>
       <td align="center" valign="top" width="20%"><a href="https://github.com/Friel05">
          <img src="https://avatars.githubusercontent.com/u/150269790?v=4" width="100px;" alt="Jemuel Masigla"/>
